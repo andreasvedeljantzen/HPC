@@ -7,9 +7,10 @@
 double 
 distance(particle_t *p, int n) {
 	
+	int nparts;
 	double total_length;
 	total_length = 0.0;
-	for(int i = 0; i < n; i++ ) 
+	for(int i = 0; i < nparts; i++ ) 
 		{
       		p[i].dist = sqrt(pow(p[i].x,2) + pow(p[i].y,2) + pow(p[i].z,2));
       		total_length += p[i].dist;
@@ -25,7 +26,8 @@ distance(particle_t *p, double *v, int n) {
 
 		double total_length;
 		total_length = 0.0;
-		for(int i = 0; i < n; i++ ) 
+		int nparts;
+		for(int i = 0; i < nparts; i++ ) 
 		{
     		v[i] = sqrt(pow(p[i].x,2) + pow(p[i].y,2) + pow(p[i].z,2));
     		total_length += v[i];

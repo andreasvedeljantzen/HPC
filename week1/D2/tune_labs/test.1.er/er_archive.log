@@ -1,0 +1,18 @@
+### Start Wed Jan  3 15:53:07 2018
+# /opt/oracle/developerstudio12.5/bin/../bin/er_archive -n -O /zhome/43/c/115859/Documents/HPC/week1/D2/tune_labs/test.1.er/er_archive.log /zhome/43/c/115859/Documents/HPC/week1/D2/tune_labs/test.1.er
+Copying `/zhome/43/c/115859/Documents/HPC/week1/D2/tune_labs/internal'
+  to `/zhome/43/c/115859/Documents/HPC/week1/D2/tune_labs/test.1.er/archives/internal_h8KXo7p6Cf4'
+Copying `/lib64/librt-2.12.so'
+  to `/zhome/43/c/115859/Documents/HPC/week1/D2/tune_labs/test.1.er/archives/librt-2.12.so_aP_8v-wjLK7'
+Copying `/lib64/libpthread-2.12.so'
+  to `/zhome/43/c/115859/Documents/HPC/week1/D2/tune_labs/test.1.er/archives/libpthread-2.12.so_aP_8v-wjLK7'
+Copying `/lib64/libdl-2.12.so'
+  to `/zhome/43/c/115859/Documents/HPC/week1/D2/tune_labs/test.1.er/archives/libdl-2.12.so_aP_8v-wjLK7'
+Copying `/lib64/libc-2.12.so'
+  to `/zhome/43/c/115859/Documents/HPC/week1/D2/tune_labs/test.1.er/archives/libc-2.12.so_aP_8v-wjLK7'
+Copying `/lib64/libm-2.12.so'
+  to `/zhome/43/c/115859/Documents/HPC/week1/D2/tune_labs/test.1.er/archives/libm-2.12.so_aP_8v-wjLK7'
+Copying `/opt/oracle/developerstudio12.5/lib/analyzer/amd64/runtime/libcollector.so'
+  to `/zhome/43/c/115859/Documents/HPC/week1/D2/tune_labs/test.1.er/archives/libcollector.so_-C1_XAIanQd'
+Copying `/lib64/ld-2.12.so'
+  to `/zhome/43/c/115859/Documents/HPC/week1/D2/tune_labs/test.1.er/archives/ld-2.12.so_aP_8v-wjLK7'

@@ -2,7 +2,7 @@ CC	= gcc
 OPT	= -g -O3
 CHIP	= 
 ISA	= -std=c99
-DEFS	= #-DDATA_ANALYSIS #-DNBYTES=8
+DEFS	= -DDATA_ANALYSIS #-DNBYTES=8
 LIBS	= -lm
 CFLAGS  = $(OPT) $(CHIP) $(ISA) $(DEFS) $(XOPT)
 
