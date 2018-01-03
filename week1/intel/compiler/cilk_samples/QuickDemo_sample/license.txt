@@ -1,0 +1,12 @@
+QuickDemo Intel(R) Cilk(TM) Plus Sample
+
+License Information Follows
+---------------------------
+* src\*.h, src\*.cpp
+* src\res\*.* 
+* readme.html, Build.bat
+
+Copyright 2016 Intel Corporation
+
+* license: http://software.intel.com/en-us/articles/intel-sample-source-code-license-agreement/  
+

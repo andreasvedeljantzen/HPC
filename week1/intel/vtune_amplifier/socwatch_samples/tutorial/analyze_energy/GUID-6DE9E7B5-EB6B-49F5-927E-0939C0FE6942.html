@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="DC.Type" content="topic" />
+<meta name="DC.Title" content="Set Up the Windows* OS Host and Target Systems" />
+<meta name="DC.subject" content="Analysis, Windows OS target system, Intel&reg; Energy Profiler" />
+<meta name="keywords" content="Analysis, Windows OS target system, Intel&reg; Energy Profiler" />
+<meta name="DC.Relation" scheme="URI" content="GUID-836E3657-B12F-4773-8F63-CBE7AB94F3F8.html" />
+<meta name="prodname" content="VTune Amplifier" />
+<meta name="version" content="" />
+<meta name="series" content="" />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="GUID-6DE9E7B5-EB6B-49F5-927E-0939C0FE6942" />
+<meta name="DC.Language" content="en-US" />
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css" />
+<title>Set Up the Windows* OS Host and Target Systems</title>
+<script src="resources/prism/prism.js"><!----></script>
+<xml>
+<MSHelp:Attr xmlns:MSHelp="http://www.microsoft.com/MSHelp/" Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr xmlns:MSHelp="http://www.microsoft.com/MSHelp/" Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Attr xmlns:MSHelp="http://www.microsoft.com/MSHelp/" Name="TopicType" Value="kbReference"></MSHelp:Attr>
+<MSHelp:Keyword xmlns:MSHelp="http://www.microsoft.com/MSHelp/" Index="F" Term="Context-id"></MSHelp:Keyword>
+</xml>
+<link href="resources/prism/prism.css" rel="stylesheet" />
+</head>
+<body id="GUID-6DE9E7B5-EB6B-49F5-927E-0939C0FE6942">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; VTune&#8482; Amplifier for Systems</em></p>
+
+
+<h1 class="topictitle1">Set Up the Windows* OS Host and Target Systems</h1>
+<div><p><img height="32" src="GUID-AE4B0E82-637D-4E88-949B-A1F6CFB43219-low.gif" width="32" /> Before you start analyzing the energy usage of your Windows* system, do the following: 
+    </p>
+<ol id="GUID-E3F4DCBB-806E-4391-AD06-BE42845AC582"><li>Get software tools. 
+      </li>
+<li>Set up your target Windows system. 
+      </li>
+</ol>
+<div class="section" id="GUID-DD06A162-FD27-4283-BCBE-DFA81656BE0F"><h2 class="sectiontitle">Get Software Tools</h2><p>You will need the following tools on the host Windows system to run an energy analysis on a target Windows system: 
+      </p>
+<ul id="GUID-F4AE4B40-FC23-4455-A815-8C7B12C042ED"><li><p>Intel&reg; System Studio for Windows Target, including sample applications 
+          </p>
+<p>If you do not already have access to Intel System Studio and Intel VTune&#8482; Amplifier for Systems, you can download an evaluation copy from 
+            <a href="http://software.intel.com/EN-US/ARTICLES/INTEL-SOFTWARE-EVALUATION-CENTER/" target="_blank">http://software.intel.com/EN-US/ARTICLES/INTEL-SOFTWARE-EVALUATION-CENTER/</a>. 
+          </p>
+</li>
+<li>Access to your target Windows system 
+          <div class="Note"><h3 class="NoteTipHead">Note</h3> <p>The Intel SoC Watch collector can be run on the Windows system with Intel System Studio installed. A separate host and target system are not required. 
+            </p>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="GUID-48851033-6AB4-492C-89D4-FA69660F643C"><h2 class="sectiontitle">Set up the Intel SoC Watch Collector on the Target Windows System</h2><p>Use the following steps to configure your target Windows device for analysis. 
+      </p>
+<ol id="GUID-B4701033-68DA-4C8D-941C-700D9F3E4C60"><li><p>Copy the 32-bit or 64-bit version of the Intel SoC Watch installer (<samp class="codeph">socwatch_windows_<var>&lt;version&gt;</var>.msi</samp>) to your target Windows device. 
+          </p>
+<p>The default installer location on a 64 bit system is 
+            <samp class="codeph">C:\Program Files (x86)\IntelSWTools\VTune Amplifier 
+              <var>&lt;version&gt;</var> for Systems\target\windows_socwatch</samp>. 
+          </p>
+</li>
+<li><p>Run the installer on the target Windows system. This will install the tool (<samp class="codeph">socwatch.exe</samp>) and appropriate drivers. 
+          </p>
+<p>The default installation location is 
+            <samp class="codeph">C:\Program Files (x86)\Intel\SocWatch</samp>. 
+          </p>
+</li>
+<li>Set environment variables. 
+          <ol type="a" id="GUID-BD0FDABC-00D6-4702-9F14-00E68F13B464"><li><p>Set the 
+                <samp class="codeph">Path</samp> environment variable to include the installed location of Intel SoC Watch. 
+              </p>
+<p>The default installation location is 
+                <samp class="codeph">C:\Program Files (x86)\Intel\SocWatch</samp>. 
+              </p>
+</li>
+<li><p>To maximize symbol information available to the tool for analysis, set the 
+                <samp class="codeph">_NT_SYMBOL_PATH</samp> environment variable to include the Microsoft*-provided public symbols location by running the following command:
+              </p>
+<pre><var>&lt;install_directory&gt;</var>\bin\setsymbol.bat</pre><p>Optionally, you can include private symbol locations as arguments for the command. For more information on specifying a symbol path, see http://msdn.microsoft.com/en-us/library/windows/hardware/ff558829(v=vs.85).aspx. 
+              </p>
+</li>
+</ol>
+</li>
+</ol>
+</div>
+<div class="section" id="GUID-80C8428B-C91E-4EA6-AE29-4AF4546CDA79"><h2 class="sectiontitle">Set up the Sample Application on the Target Windows System</h2><p>Use the following steps to set up the sample application for analysis: 
+      </p>
+<ol id="GUID-31C39F90-D81B-4DEF-8F85-8C40723BC99B"><li><p>Copy the sample application (<samp class="codeph">socwatch_samples.zip</samp>) to your target Windows device. The sample application is available from the following location: 
+            <a href="https://software.intel.com/en-us/articles/intelr-energy-profiler-socwatch-samples" target="_blank">https://software.intel.com/en-us/articles/intelr-energy-profiler-socwatch-samples</a></p>
+</li>
+<li>Extract the sample from the 
+          <samp class="codeph">.zip</samp> file. 
+        </li>
+</ol>
+<p>A 
+        <span class="filepath">readme.html</span> file is available at the top level of the extracted 
+        <span class="filepath">socwatch_samples</span> directory with instructions on the use of the sample application. A compiled binary for the application is available in the 
+        <span class="filepath">bin</span> subdirectory. There is no need to compile the sample code prior to using the sample application. 
+      </p>
+</div>
+<div class="section" id="GUID-CE57A721-E6ED-47B8-92E8-77208D7398F7"><h2 class="sectiontitle">Key Terms</h2><p><a href="GUID-CB6C7239-6896-4228-81DF-FA0631F7D1F3.html#HOST_SYSTEM">Host System</a></p>
+<p><a href="GUID-CB6C7239-6896-4228-81DF-FA0631F7D1F3.html#TARGET_SYSTEM">Target System</a></p>
+</div>
+<div class="section" id="GUID-13E72EF9-DB83-4098-9D93-CC3AAD2A3B49"><h2 class="sectiontitle">Next Step</h2><p><a href="GUID-543B9227-9BCF-4911-A302-71B48DF72ACE.html">Run Energy Analysis</a></p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="GUID-836E3657-B12F-4773-8F63-CBE7AB94F3F8.html">Analyzing Energy Usage</a></div>
+</div>
+<div></div>
+</body>
+</html>

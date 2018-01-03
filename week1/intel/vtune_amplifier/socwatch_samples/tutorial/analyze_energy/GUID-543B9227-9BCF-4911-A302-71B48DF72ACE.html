@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="DC.Type" content="topic" />
+<meta name="DC.Title" content="Run Energy Analysis" />
+<meta name="DC.subject" content="Intel&reg; Energy Analysis, SoC Watch" />
+<meta name="keywords" content="Intel&reg; Energy Analysis, SoC Watch" />
+<meta name="DC.Relation" scheme="URI" content="GUID-836E3657-B12F-4773-8F63-CBE7AB94F3F8.html" />
+<meta name="prodname" content="VTune Amplifier" />
+<meta name="version" content="" />
+<meta name="series" content="" />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="GUID-543B9227-9BCF-4911-A302-71B48DF72ACE" />
+<meta name="DC.Language" content="en-US" />
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css" />
+<title>Run Energy Analysis</title>
+<script src="resources/prism/prism.js"><!----></script>
+<xml>
+<MSHelp:Attr xmlns:MSHelp="http://www.microsoft.com/MSHelp/" Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr xmlns:MSHelp="http://www.microsoft.com/MSHelp/" Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Attr xmlns:MSHelp="http://www.microsoft.com/MSHelp/" Name="TopicType" Value="kbReference"></MSHelp:Attr>
+<MSHelp:Keyword xmlns:MSHelp="http://www.microsoft.com/MSHelp/" Index="F" Term="Context-id"></MSHelp:Keyword>
+</xml>
+<link href="resources/prism/prism.css" rel="stylesheet" />
+</head>
+<body id="GUID-543B9227-9BCF-4911-A302-71B48DF72ACE">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; VTune&#8482; Amplifier for Systems</em></p>
+
+
+<h1 class="topictitle1">Run Energy Analysis</h1>
+<div><p><img height="32" src="GUID-AE4B0E82-637D-4E88-949B-A1F6CFB43219-low.gif" width="32" />
+      Follow these steps to run Intel&reg; SoC Watch analysis on your target Windows*
+      device. 
+    </p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3> <p>To view the command line syntax and complete list of features for the
+        Intel SoC Watch collector, specify the help option: 
+        <samp class="codeph">socwatch -h</samp></p>
+</div>
+<div class="section" id="GUID-2D8B71A2-27B4-45D4-80BD-C1DC1B1FA068"><h2 class="sectiontitle">Run Analysis on Idle System</h2><p>Use the following steps to run an energy analysis on the target
+        Windows device without the sample program running. This data will provide a
+        basis for comparison in determining energy consumption changes: 
+      </p>
+<ol id="GUID-8DD697B5-6146-4294-B63B-51527C2D7F9E"><li>Launch a command prompt window as an administrator. 
+        </li>
+<li><p>Run the following command to collect a set of system data for 60
+            seconds and generate an output file that can be imported into Intel VTune&#8482;
+            Amplifier for Systems. The output files will be named 
+            <samp class="codeph">idletest</samp>. 
+          </p>
+<pre>socwatch -f sys -m -t 60 -r sww -r detail -o idletest</pre><div class="Note"><h3 class="NoteTipHead">Tip</h3> <p>Run the command from within the location in which you want the
+              result files saved or preface the output file name with the path to the desired
+              location. 
+            </p>
+</div>
+<p>In this command, the following options are used: 
+          
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-25D01D98-8DC9-4D63-929A-5A1AA8C01655" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" width="NaN%" id="d1066e63"><p>Option 
+                    </p>
+</th>
+<th class="cellrowborder" valign="top" width="NaN%" id="d1066e66"><p>Description 
+                    </p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="NaN%" headers="d1066e63 "><p><samp class="codeph">-f</samp></p>
+</td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d1066e66 "><p>Specifies the data to collect. By specifying the 
+                      <samp class="codeph">sys</samp> feature group, most system data is
+                      collected, including system, CPU, GPU, and device time in low power (sleep)
+                      states, time in processor frequencies, temperature, and total memory bandwidth.
+                      
+                    </p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d1066e63 "><p><samp class="codeph">-m</samp></p>
+</td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d1066e66 "><p>Indicates the maximum detail for the specified feature
+                      is collected. This option is required if you are importing the results into
+                      Intel VTune Amplifier. 
+                    </p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d1066e63 "><p><samp class="codeph">-t</samp></p>
+</td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d1066e66 "><p>Specifies the duration of collection (in seconds). 
+                    </p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d1066e63 "><p><samp class="codeph">-r</samp></p>
+</td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d1066e66 "><p>Specifies the type of result to generate after
+                      collection is complete. The 
+                      <samp class="codeph">sww</samp> type produces a 
+                      <samp class="codeph">.sww1</samp> file that can be imported into
+                      Intel VTune Amplifier. The 
+                      <samp class="codeph">detail</samp> type produces a 
+                      <samp class="codeph">.txt</samp> file with a detailed summary of the
+                      collection results. 
+                    </p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d1066e63 "><p><samp class="codeph">-o</samp></p>
+</td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d1066e66 "><p>Specifies the base name for the result files. For this
+                      analysis, the file name 
+                      <samp class="codeph">idletest</samp> was used. 
+                    </p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+<p>The output from executing the command on a system with Intel
+            microarchitecture code named Broadwell is shown in the following example: 
+          </p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3> <p>The screen captures and energy usage data provided in this
+              tutorial are created on a system with Wi-Fi disabled and no other applications
+              running during collection. Your data may vary depending on the Intel
+              architecture used by your system and transient system activity. 
+            </p>
+</div>
+<div class="fignone" id="GUID-484C2C02-DDB6-4053-9B4C-6081C7611C7D"><img src="GUID-42ADAAA0-3CC2-432D-B726-2EE1682FF310-low.png" width="700" /></div>
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-1C693975-D8FE-4039-A789-FE3428448D69" width="90%" frame="void" border="1" rules="none" cellspacing="2"><tbody><tr><td class="noborder" valign="top" width="7.262164124909224%"><p id="GUID-46B320A2-46E4-47DA-ADDA-1BF3686EE827"><img height="22" src="GUID-A4AF9F6D-C2F3-4CC2-BC62-4EF73CA76B7B-low.jpg" width="22" alt="1" /></p>
+</td>
+<td class="noborder" valign="top" width="92.73783587509078%"><p id="GUID-2AC7588B-9152-4034-9777-D1912C560DEE">The first 
+                      <samp class="codeph">WARNING</samp> message specified about the
+                      large data file is not a concern for this collection as the collection time is
+                      short. If you run a larger collection and are concerned about data file size,
+                      you can terminate collection prior to the duration time specified by using
+                      Ctrl+C. Result files are still generated if the collection is terminated early.
+                      
+                    </p>
+<p id="GUID-25A5FF94-BE25-4895-B6D9-4C442D94EBE9">The subsequent 
+                      <samp class="codeph">WARNING</samp> messages tell you which metrics
+                      specified on the command line are not supported on the system on which
+                      collection is being run. In this example, the 
+                      <samp class="codeph">sys</samp> group was specified. North Complex
+                      and South Complex D0ix residency is not available on the system on which the
+                      collection was run. 
+                    </p>
+</td>
+</tr>
+<tr><td class="noborder" valign="top" width="7.262164124909224%"><p id="GUID-1DE15FF1-DE34-4C25-948E-1942336D6755"><img height="22" src="GUID-D8DBA40B-558C-4899-B9B6-9068F1CAE124-low.jpg" width="22" alt="2" /></p>
+</td>
+<td class="noborder" valign="top" width="92.73783587509078%"><p id="GUID-9556A181-47EA-4DFB-AC3C-EE05789CBB3F">After
+                      collection completes, result files are created with the name specified in the 
+                      <samp class="codeph">-o</samp> option. In this example, all result
+                      files would be named 
+                      <samp class="codeph">idletest</samp> and are stored in the 
+                      <span class="filepath">C:\socreports</span> directory. If a
+                      results directory is not specified in the command line, the results are stored
+                      in the directory from which the command is run. 
+                    </p>
+<p>The following file types are available in the results
+                      directory: 
+                    <ul id="GUID-FDA7161B-56A0-46AA-A11A-20A251E0ABC6"><li><samp class="codeph">.sww1</samp> - Result file that can be
+                        imported and viewed in Intel VTune Amplifier for Systems. 
+                      </li>
+<li><samp class="codeph">.csv</samp> - Summary and timeline files
+                        with details that cannot be visualized in VTune Amplifier. 
+                      </li>
+<li><samp class="codeph">.txt</samp> - Detailed report file with
+                        analysis of time spent in sleep and active states, wake-up causes, and so on. 
+                      </li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="GUID-B658B459-870A-4D9C-AC8A-04E4E0C8A188"><h2 class="sectiontitle">Run Analysis with Sample Program Running</h2><p>Use the following steps to run an energy analysis on the target
+        Windows device with the Pi_Console program executing: 
+      </p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3> <ul id="GUID-979CA418-14F3-48B4-9476-31D72DBE3FB3"><li>Samples are non-deterministic. Your screens may vary from the
+            screen captures shown throughout this tutorial. 
+          </li>
+<li>Samples are designed only to illustrate Intel VTune Amplifier
+            features; they do not represent best practices for creating code. 
+          </li>
+</ul>
+</div>
+<ol id="GUID-EAFAD595-725A-40B3-A890-17ED795C37FD"><li>Launch a command prompt window as an administrator. 
+        </li>
+<li><p>Run the following command to collect the same system data as the
+            first run, but while running the Pi_Console application on your target Windows
+            system. The 
+            <samp class="codeph">-t</samp> option is not specified here because the
+            collection should not stop until the application terminates rather than after a
+            certain time interval. 
+          </p>
+<pre>socwatch -f sys -m -r sww -r detail -o piconsoletest -p <var>&lt;path&gt;</var>\socwatch_sample\bin\Pi_Console.exe <var>&lt;arg&gt;</var></pre><p>In this command, the following options are used: 
+          
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-9600988A-EA93-4C38-AD0B-F72748479421" frame="border" border="1" cellspacing="0" rules="all"><thead align="left"><tr><th class="cellrowborder" valign="top" width="NaN%" id="d1066e228"><p>Option 
+                    </p>
+</th>
+<th class="cellrowborder" valign="top" width="NaN%" id="d1066e231"><p>Description 
+                    </p>
+</th>
+</tr>
+</thead>
+<tbody><tr><td class="cellrowborder" valign="top" width="NaN%" headers="d1066e228 "><p><samp class="codeph">-f</samp></p>
+</td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d1066e231 "><p>Specifies the data to collect. By specifying the 
+                      <samp class="codeph">sys</samp> feature group, most system data is
+                      collected, including system, CPU, GPU, and device time in low power (sleep)
+                      states, time in processor frequencies, temperature, and total memory bandwidth.
+                      
+                    </p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d1066e228 "><p><samp class="codeph">-m</samp></p>
+</td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d1066e231 "><p>Indicates the maximum detail for the specified feature
+                      is collected. This option is required if you are importing the results into
+                      Intel VTune Amplifier. 
+                    </p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d1066e228 "><p><samp class="codeph">-r</samp></p>
+</td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d1066e231 "><p>Specifies the type of result to generate after
+                      collection is complete. The 
+                      <samp class="codeph">sww</samp> type produces a 
+                      <samp class="codeph">.sww1</samp> file that can be imported into
+                      Intel VTune Amplifier. The 
+                      <samp class="codeph">detail</samp> type produces a 
+                      <samp class="codeph">.txt</samp> file with a detailed summary of the
+                      collection results. 
+                    </p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d1066e228 "><p><samp class="codeph">-o</samp></p>
+</td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d1066e231 "><p>Specifies the base name for the result files. For this
+                      analysis, the file name 
+                      <samp class="codeph">piconsoletest</samp> was used. 
+                    </p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="NaN%" headers="d1066e228 "><p><samp class="codeph">-p</samp></p>
+</td>
+<td class="cellrowborder" valign="top" width="NaN%" headers="d1066e231 "><p>The path to a program executable file to be started
+                      automatically prior to collection. This option must be used at the end of the
+                      command line and can be followed by arguments to be passed to that program.
+                      Replace the 
+                      <samp class="codeph"><var>&lt;path&gt;</var></samp> variable
+                      with the file path to the location to which you extracted the 
+                      <samp class="codeph">pi_console.exe</samp> sample program. The 
+                      <samp class="codeph"><var>&lt;arg&gt;</var></samp> variable
+                      is replaced with an integer between 1-20. The application multiples the integer
+                      by one million to determine the number of steps it uses to calculate pi. 
+                    </p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+<p>The command is shown in the following example using the argument
+            20 (calculating the value of pi in 20 million steps) when running the
+            Pi_Console program on a system with Intel microarchitecture code named
+            Broadwell: 
+          </p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3> <p>The screen captures and energy usage data provided in this
+              tutorial are created on a system with Wi-Fi disabled and no other applications
+              running during collection. Your data may vary depending on the Intel
+              architecture used by your system and transient system activity. 
+            </p>
+</div>
+<div class="fignone" id="GUID-88A03A2F-438C-4C3C-8987-47B211D3ADAA"><img src="GUID-C5524568-C152-48D0-B54E-3F8D1091ECBD-low.png" width="700" /></div>
+<p>Energy consumption data is collected and saved in the 
+            <samp class="codeph">piconsoletest.sww1</samp> file in the results directory.
+            Additional output files are also created and stored in the same location. 
+          </p>
+</li>
+</ol>
+<p>For more information, see the 
+        <em>Intel SoC Watch User's Guide</em> (socwatch_windows_users_guide.pdf).
+        
+      </p>
+</div>
+<div class="section" id="GUID-13E72EF9-DB83-4098-9D93-CC3AAD2A3B49"><h2 class="sectiontitle">Next Step</h2><p><a href="GUID-3C26E463-F92E-4D52-9140-0790EBAD10D4.html">Import and View Result on the
+          Host System</a></p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="GUID-836E3657-B12F-4773-8F63-CBE7AB94F3F8.html">Analyzing Energy Usage</a></div>
+</div>
+<div></div>
+</body>
+</html>

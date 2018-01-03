@@ -1,0 +1,239 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Running the Pre-built UEFI Binary with a Test Driver">
+<meta name="abstract" content="">
+<meta name="description" content="">
+<meta name="DC.Relation" scheme="URI" content="GUID-49358A19-3703-4371-BC2C-9664E4129464.htm">
+<meta name="prodname" content="">
+<meta name="version" content="2017">
+<meta name="series" content="">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-574D50F4-CA67-476A-852F-558E550CF107">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Running the Pre-built UEFI Binary with a Test Driver</title>
+<script src="resources/prism/prism.js"><!----></script>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="Context-id"></MSHelp:Keyword>
+</xml>
+<link href="resources/prism/prism.css" rel="stylesheet">
+</head>
+<body id="GUID-574D50F4-CA67-476A-852F-558E550CF107">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+
+
+ 
+  <h1 class="topictitle1">Running the Pre-built UEFI Binary with a Test
+	 Driver</h1>
+ 
+  <!-- 
+  --> 
+   
+  <div><p class="shortdesc"> 
+  </p>
+ 
+	 <p>This section shows how to run the pre-compiled edk2
+		UEFI binary with a test driver and how to use some of the UEFI specific
+		features of the Intel&reg; System Debugger. The debugger connects to the emulated
+		target over a TCP port opened by the debug agent module built in to the target
+		binary. 
+	 </p>
+ 
+	 <div class="section" id="GUID-9E296D03-4B07-4B5C-B6B7-90BFE7F04BE1"><h2 class="sectiontitle">Prerequisites</h2> 
+		 
+		<ol id="GUID-5C542B27-8B19-45A9-839F-9F7C86498CC6"> 
+		  <li>
+        Qemu* installation, qemu-w64-setup-20151208. See
+        <a href="http://qemu.weilnetz.de/" target="_blank">http://quemu.weilnetz.de</a>. 
+        <p>Note that the demo might not run correctly with other versions of Qemu*.</p>
+
+		  </li>
+ 
+		  <li> Intel&reg; System Studio installation 
+		  </li>
+ 
+		  <li>Make sure the demo fileset is copied to 
+			 <samp class="codeph">C:\uefi_demo</samp>. 
+			 <p>If you want to use a different location you need to modify the 
+				<span class="filepath">run_uefi_demo.xdb</span> script file to point to the
+				location where the folder is copied to. The path must not contain spaces. Use
+				only forward slashes for the path given to SPAWN command. 
+			 </p>
+ 
+		  </li>
+ 
+		</ol>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-7C00BE07-F4DE-4EF6-8C3F-EA158B140F22"><h2 class="sectiontitle"> Running and Debugging the Test Driver</h2> 
+		 
+		<ol id="GUID-9674243F-1108-4E57-BABB-871DE4D3F857"> 
+		  <li>Launch the Intel&reg; System Debugger with the UEFI agent: 
+			 <ol type="a" id="GUID-335896E7-3A4F-4317-ABD6-6C038F261420"> 
+				<li>Click 
+				  <b class="uicontrol">System Debugger (Debug)</b> on your Start
+				  page. 
+				</li>
+ 
+				<li> Select 
+				  <b class="uicontrol">File</b> &gt; <b class="uicontrol">Execute batch file</b> and choose 
+				  <span class="filepath">C:\uefi_demo\run_uefi_demo.xdb script</span>. 
+				  <p><a name="IMAGE_DBD156C8D2124EB99938BF2E704BBAF2"><!-- --></a><img id="IMAGE_DBD156C8D2124EB99938BF2E704BBAF2" src="GUID-18A018C2-4E55-4A59-B62A-B86AAEB33CCB-low.png"> 
+				  </p>
+ 
+				  <p>The script 
+				  <ul id="GUID-EAAAF471-73F9-431C-BEEA-D1C1C5DD1C1D"> 
+					 <li> launches Qemu* 
+					 </li>
+ 
+					 <li> connects to the TCP port opened by the debug agent 
+					 </li>
+ 
+					 <li>adds the test driver to the UEFI watchlist 
+					 </li>
+ 
+				  </ul>
+ 
+				  </p>
+ 
+				</li>
+ 
+			 </ol>
+ 
+		  </li>
+ 
+		  <li>Click the 
+			 <a name="IMAGE_9DDBA9C03A494824A26E4EF5B3952AAE"><!-- --></a><img id="IMAGE_9DDBA9C03A494824A26E4EF5B3952AAE" src="GUID-17C2D22B-904D-4620-A239-0F2D600F436E-low.gif"> 
+			 <b class="uicontrol">Run</b> button. 
+			 <p>The demo is executed and halted at the test module entry point.
+				Module symbols are loaded. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> Expand the view on the source files window and open 
+			 <span class="filepath">driversample.c</span>. 
+			 <p><a name="IMAGE_A904C5C5B99E44DBAABBF9F6ABE85E2E"><!-- --></a><img id="IMAGE_A904C5C5B99E44DBAABBF9F6ABE85E2E" src="GUID-AB1CF675-AA5E-4FF8-AAA6-9D9592CDEF5D-low.png"> 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> Set breakpoint on line 1860 and run to it to get to the main
+			 function of the DriverSample. 
+			 <p><a name="IMAGE_DAAD4D3AA7F94689A985A6B7E07706B3"><!-- --></a><img id="IMAGE_DAAD4D3AA7F94689A985A6B7E07706B3" src="GUID-92F94B73-48DF-4C2B-8881-22037394E3C6-low.png"> 
+			 </p>
+ 
+		  </li>
+ 
+		</ol>
+ 
+		<p> See 
+		  <a href="GUID-F6670334-3FC8-449D-A7F8-709A4A7BA9EC.htm">Modifying the Test Driver</a>
+		  on how to add your own code to the DriverSample module, recompile and run the
+		  new code to further test the debugger functionality. 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-C9837949-5BB2-4E17-A1FB-3666D38548E6"><h2 class="sectiontitle">UEFI Debugging Features</h2> 
+		 
+		<p> For an introduction to basic debugger functionality see 
+		  <a href=" http://software.intel.com/en-us/intel-software-technical-documentation?field_software_product_tid[]=78593" target="_blank">Intel&reg; System Debugger Documentation</a>. 
+		</p>
+ 
+		<ol id="GUID-5F05ACC7-EBFF-4CA8-8358-7474185EB02D"> 
+		  <li>In the 
+			 <b class="uicontrol">Source</b> window, right-click the function
+			 parameter 
+			 <samp class="codeph">EFI_SYSTEM_TABLE *SystemTable</samp>. 
+		  </li>
+ 
+		  <li>Select 
+			 <b class="uicontrol">On Selection</b> &gt; <b class="uicontrol">Add to Eval Window</b> from the context-menu. 
+			 <p><a name="IMAGE_9FF0D6AE6AFF4F9F9C83FC07F7DEB6E7"><!-- --></a><img id="IMAGE_9FF0D6AE6AFF4F9F9C83FC07F7DEB6E7" src="GUID-BC507367-912E-476F-B623-3C905980AE00-low.png"> 
+			 </p>
+ 
+			 <p>The DXE module specific data is displayed in the 
+				<b class="uicontrol">Evaluations</b> window. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> Enter 
+			 <samp class="codeph">eval gST</samp> in the 
+			 <b class="uicontrol">Console</b> window to evaluate the global variable
+			 
+			 <samp class="codeph">gST</samp>. 
+			 <p>The command prints out the DXE system table address which can be
+				used to print out information about the DXE phase: 
+			 </p>
+ 
+			 <p> 
+				<pre>xdb&gt; eval gST
+gST [ at address 0x0000000078C13FF0 ] : 0x0000000078233F18 [\\GST]
+</pre> 
+			 </p>
+ 
+			 <p> Set the system table address in the 
+				<b class="uicontrol">Console</b> window: 
+			 </p>
+ 
+			 <p> 
+				<pre>xdb&gt; efi "setsystab <strong>0x0000000078233F18</strong>"</pre> 
+			 </p>
+ 
+			 <p> After the system table address it set, it is possible to print a
+				list of all loaded DXE modules: 
+			 </p>
+ 
+			 <p> 
+				<pre>xdb&gt; efi showdxemodules</pre> 
+			 </p>
+ 
+			 <p> Use the system table address to print out more information about
+				the DXE phase: 
+			 </p>
+ 
+			 <p> 
+				<pre>xdb&gt; efi showsystab</pre> 
+			 </p>
+ 
+		  </li>
+ 
+		  <li>Select 
+			 <b class="uicontrol">Debug</b> &gt; <b class="uicontrol">Create Breakpoint...</b>. 
+		  </li>
+ 
+		  <li>In the 
+			 <b class="uicontrol">Create Breakpoint</b> dialog box, set a breakpoint
+			 to IO port 80: 
+			 <p><a name="IMAGE_37EE2740E1E347C98A8CB283B267F38F"><!-- --></a><img id="IMAGE_37EE2740E1E347C98A8CB283B267F38F" src="GUID-009AE359-49C2-4BCE-AEA7-A16ECE456927-low.png"> 
+			 </p>
+ 
+		  </li>
+ 
+		</ol>
+ 
+	 </div>
+ 
+  </div>
+ 
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-49358A19-3703-4371-BC2C-9664E4129464.htm">Intel&reg; System Debugger UEFI Debugging Tutorial</a></div>
+</div>
+<div></div>
+
+</body>
+</html>

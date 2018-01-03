@@ -1,0 +1,14 @@
+SoCWatch Sample
+
+License Information Follows
+---------------------------
+* src\pi.h, src\pi.cpp 
+* src\stdafx.h, src\stdafx.cpp
+* src\Pi_Console.cpp
+* bin\Pi_Console.exe
+* readme.mht,Build.bat
+
+Copyright 2015 Intel(R) Corporation
+
+* license: http://software.intel.com/en-us/articles/intel-sample-source-code-license-agreement/  
+

@@ -1,0 +1,210 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Modifying the Test Driver">
+<meta name="abstract" content="">
+<meta name="description" content="">
+<meta name="DC.Relation" scheme="URI" content="GUID-49358A19-3703-4371-BC2C-9664E4129464.htm">
+<meta name="prodname" content="">
+<meta name="version" content="2017">
+<meta name="series" content="">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-F6670334-3FC8-449D-A7F8-709A4A7BA9EC">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Modifying the Test Driver</title>
+<script src="resources/prism/prism.js"><!----></script>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="Context-id"></MSHelp:Keyword>
+</xml>
+<link href="resources/prism/prism.css" rel="stylesheet">
+</head>
+<body id="GUID-F6670334-3FC8-449D-A7F8-709A4A7BA9EC">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+
+
+ 
+  <h1 class="topictitle1">Modifying the Test Driver</h1>
+ 
+  <!-- 
+  --> 
+   
+  <div><p class="shortdesc"> 
+  </p>
+ 
+	 <p>This section will shows how to compile your own code
+		and run it in the emulator. To do this you need to integrate a new module into
+		the build tree, compile the UEFI image, and then deploy it to the emulator. 
+	 </p>
+ 
+	 <div class="section" id="GUID-FFD46EAC-4779-4A3F-B8CA-6B3BCE504292"><h2 class="sectiontitle"> Prerequisites</h2> 
+		 
+		<ul id="GUID-BC015C33-BDD4-4F1D-AF3C-AB08A317ECA2"> 
+		  <li>
+        Qemu* installation, qemu-w64-setup-20151208. See
+        <a href="http://qemu.weilnetz.de/" target="_blank">http://qemu.weilnetz.de/</a>.
+        <p>Note that the demo might not run correctly with other versions of Qemu*.</p>
+
+			 
+		  </li>
+ 
+		  <li> Visual Studio* 2008 installation 
+		  </li>
+ 
+		  <li> iASL compiler and Windows ACPI tools*. Download from 
+			 <a href="https://www.acpica.org/downloads/binary-tools" target="_blank">https://www.acpica.org/downloads/binary-tools</a>
+			 and unzip the archive to 
+			 <span class="filepath">C:\ASL\</span>. 
+		  </li>
+ 
+		  <li>Latest Netwide Assembler* (NASM). Download from 
+			 <a href="http://www.nasm.us/" target="_blank">http://www.nasm.us/</a>.
+			 
+		  </li>
+ 
+		  <li> Intel&reg; System Studio installation 
+		  </li>
+ 
+		  <li>
+        Intel&reg; System Studio Sample Bundle: The complete contents of the folder <samp class="codeph">
+                  system_debugger/UEFI_debugging_sample</samp> must be copied to <samp class="codeph">C:\uefi_demo</samp>. 
+       
+			 <p>If you want to use a different location you need to modify the 
+				<span class="filepath">run_uefi_demo.xdb</span> script file to point to the
+				location where the folder is copied to. The path must not contain spaces. Use
+				only forward slashes for the path given to SPAWN command. 
+			 </p>
+ 
+		  </li>
+ 
+		</ul>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-BB246C61-4E90-4DA9-A6C0-AF66E5B43D49"><h2 class="sectiontitle">Compiling the edk2 UEFI Binary</h2> 
+		 
+		<ol id="GUID-35048B07-1344-48C1-9BDC-09F15BB3A4D6"> 
+		  <li> Do an SVN checkout from 
+			 <a href="https://svn.code.sf.net/p/edk2/code/trunk/edk2" target="_blank">https://svn.code.sf.net/p/edk2/code/trunk/edk2</a>.
+			 
+		  </li>
+ 
+		  <li> Open a command window, go to the edk2 folder and run 
+			 <span class="filepath">Edk2Setup.bat</span>. 
+			 <p>This will generate some files in the 
+				<span class="filepath">conf</span> folder. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> Open 
+			 <span class="filepath">edk2/conf/target.tx</span>t in a text editor: 
+			 <ul id="GUID-9DEDC2CD-22A7-4563-9BF1-7CFA4161E333"> 
+				<li> Change ACTIVE_PLATFORM = OvmfPkg/OvmfPkgIa32.dsc 
+				</li>
+ 
+				<li> Change TOOL_CHAIN_TAG = VS2008x86 
+				</li>
+ 
+			 </ul>
+ 
+		  </li>
+ 
+		  <li> In the command window set the environment variable 
+			 <samp class="codeph">NASM_PREFIX</samp> to the NASM install location: 
+			 <p><samp class="codeph"> set
+				  NASM_PREFIX=C:\Users<strong>\&lt;userfolder&gt;\</strong>AppData\Local\nasm\ 
+				</samp> 
+			 </p>
+ 
+		  </li>
+ 
+		  <li>Open 
+			 <span class="filepath">\edk2\OvmfPkg\OvmfPkgIa32.fdf</span> in a text editor. 
+		  </li>
+ 
+		  <li> Add 
+			 <samp class="codeph">DriverSampleDxe.inf</samp> after line 210 to the list of
+			 modules included to the flash image: 
+			 <p> 
+				<pre>#
+# DXE Phase modules
+#
+INF MdeModulePkg/Core/Dxe/DxeMain.inf
+INF MdeModulePkg/Universal/DriverSampleDxe/DriverSampleDxe.inf</pre> 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> Open 
+			 <span class="filepath">\edk2\OvmfPkg\OvmfPkgIa32.dsc</span> in a text editor. 
+		  </li>
+ 
+		  <li> Add 
+			 <span class="filepath">DriverSampleDxe.inf</span> after line 479 to the list
+			 of modules to compile: 
+			 <p> 
+				<pre>#
+  # DXE Phase modules
+  #
+  MdeModulePkg/Core/Dxe/DxeMain.inf {
+    &lt;LibraryClasses&gt;
+NULL|IntelFrameworkModulePkg/Library/LzmaCustomDecompressLib/LzmaCustomDecompressLib.inf
+      DevicePathLib|MdePkg/Library/UefiDevicePathLib/UefiDevicePathLib.inf
+  }
+  
+  MdeModulePkg/Universal/DriverSampleDxe/DriverSampleDxe.inf
+
+</pre> 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> Build the image from the command line with the command 
+			 <samp class="codeph">build -D SOURCE_DEBUG_ENABLE</samp>. 
+			 <p>Firmware images are created to 
+				<span class="filepath">\edk2\Build\OvmfIa32\DEBUG_VS2008x86\FV</span>. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> Copy 
+			 <span class="filepath">OVMF_CODE.fd</span> and 
+			 <span class="filepath">OVMF_VARS.fd</span> to the directoy 
+			 <span class="filepath">C:\uefi_demo\FV</span>. 
+		  </li>
+ 
+		  <li> Follow the steps in 
+			 <a href="GUID-574D50F4-CA67-476A-852F-558E550CF107.htm">Running the Pre-built UEFI Binary with a Test Driver</a> to run the newly compiled binaries. 
+		  </li>
+ 
+		</ol>
+ 
+		<p>You have now compiled a full edk2 firmware tree. Any module loaded by
+		  the debugger can be added to the watchlist with the command 
+		  <samp class="codeph">efi "watchlist add &lt;module name&gt;"</samp>. The debugger
+		  will halt execution and load module symbols when a module on the watchlist is
+		  loaded. 
+		</p>
+ 
+	 </div>
+ 
+  </div>
+ 
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-49358A19-3703-4371-BC2C-9664E4129464.htm">Intel&reg; System Debugger UEFI Debugging Tutorial</a></div>
+</div>
+<div></div>
+
+</body>
+</html>

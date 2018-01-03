@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="DC.Type" content="topic" />
+<meta name="DC.Title" content="Import and View Results on the Host System" />
+<meta name="DC.Relation" scheme="URI" content="GUID-836E3657-B12F-4773-8F63-CBE7AB94F3F8.html" />
+<meta name="prodname" content="VTune Amplifier" />
+<meta name="version" content="" />
+<meta name="series" content="" />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="GUID-3C26E463-F92E-4D52-9140-0790EBAD10D4" />
+<meta name="DC.Language" content="en-US" />
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css" />
+<title>Import and View Results on the Host System</title>
+<script src="resources/prism/prism.js"><!----></script>
+<link href="resources/prism/prism.css" rel="stylesheet" />
+</head>
+<body id="GUID-3C26E463-F92E-4D52-9140-0790EBAD10D4">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; VTune&#8482; Amplifier for Systems</em></p>
+
+
+<h1 class="topictitle1">Import and View Results on the Host System</h1>
+<div><p><img height="32" src="GUID-AE4B0E82-637D-4E88-949B-A1F6CFB43219-low.gif" width="32" /> When the energy analysis completes, copy the result files to your Windows* OS host system and import the 
+      <samp class="codeph">.sww1</samp> result files into an Intel&reg; VTune&#8482; Amplifier for Systems project. Intel VTune Amplifier opens the collected results in the 
+      <b class="uicontrol">Platform Power Analysis</b> viewpoint. 
+    </p>
+<div class="Note"><h3 class="NoteTipHead">Note</h3> <p>You can also view the results without the assistance of visualization in the 
+        <samp class="codeph">.csv</samp> or 
+        <samp class="codeph">.txt</samp> output file. See the post-processing options in the 
+        <em>Intel SoC Watch User Guide</em> (socwatch_windows_users_guide.pdf). 
+      </p>
+</div>
+<ol id="GUID-81BF6495-8A10-45DD-BB9F-72CC9715C050"><li><p>Copy the result files from the target Windows system to the host Windows system. 
+        </p>
+</li>
+<li><p>Launch Intel VTune Amplifier for Systems on the host system. 
+        </p>
+</li>
+<li><p>Create a new project: 
+        </p>
+<ol type="a" id="GUID-F87FC8A6-217C-442E-A2A1-B4AFA00B8D19"><li>Click the 
+            <img src="GUID-5E3034B1-5931-4B62-A566-AA8EDF351871-low.gif" /><strong>New Project</strong> toolbar button from the Welcome page. 
+            <p>The 
+              <b class="uicontrol">Create a Project</b> dialog box opens. 
+            </p>
+</li>
+<li><p>Enter "Pi Console Test" in the 
+              <b class="uicontrol">Project name</b> field and click 
+              <b class="uicontrol">Create Project</b>.
+            </p>
+<p>The 
+              <b class="uicontrol">New Amplifier Result</b> tab opens with the 
+              <b class="uicontrol">Analysis Target</b> tab active. 
+            </p>
+</li>
+</ol>
+</li>
+<li><p>Import the results to the new project: 
+        </p>
+<ol type="a" id="GUID-E32E05E3-FB70-44D3-A2DA-70B70857B3C6"><li><p>Click the 
+              <img src="GUID-71605AA5-F3DE-4323-B556-9B0CA7E4675F-low.png" alt="import icon" /><b class="uicontrol">Import Result</b> button on the top toolbar. 
+            </p>
+<p>The 
+              <b class="uicontrol">Import</b> tab opens. 
+            </p>
+</li>
+<li><p> Select the 
+              <b class="uicontrol">Import a single file</b> option and click 
+              <b class="uicontrol">Browse</b>. 
+            </p>
+</li>
+<li><p> Navigate to the location where you saved the result files, select the 
+              <samp class="codeph">idletest.sww1</samp> result file, and click the 
+              <b class="uicontrol">Open</b> button. 
+            </p>
+</li>
+<li><p>Click the 
+              <img src="GUID-0CF24125-283C-48D1-B1D0-E02219223531-low.png" width="100" alt="import button" /><b class="uicontrol">Import</b> button. 
+            </p>
+<p>The result opens in the 
+              <b class="uicontrol">Platform Power Analysis</b> viewpoint. 
+            </p>
+</li>
+</ol>
+</li>
+<li>Repeat step 4 to import the 
+        <samp class="codeph">piconsoletest.sww1</samp> file. 
+      </li>
+</ol>
+<p>The results are imported into VTune Amplifier as 
+      <strong>r000</strong> (<samp class="codeph">idletest</samp>) and 
+      <strong>r001</strong> (<samp class="codeph">piconsoletest</samp>) in the 
+      <strong>Pi Console Test</strong> project.
+    </p>
+<div class="fignone" id="GUID-D2562E98-7764-4EB7-A5F5-C3073B8EC43E"><img src="GUID-15DBC0C6-1DAC-4F94-A885-8F97A25112B5-low.bmp" /></div>
+<div class="section" id="GUID-1471A7AF-64B1-4484-A08C-7A8A4710CFA3"><h2 class="sectiontitle">Next Step</h2><p><a href="GUID-4E20628C-BA53-4C07-B5DB-7EB653769548.html">Interpret Energy Data Results in VTune Amplifier for Systems</a></p>
+</div>
+</div>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="GUID-836E3657-B12F-4773-8F63-CBE7AB94F3F8.html">Analyzing Energy Usage</a></div>
+</div>
+<div></div>
+</body>
+</html>

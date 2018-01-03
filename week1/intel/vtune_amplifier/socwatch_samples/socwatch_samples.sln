@@ -1,0 +1,20 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "socwatch_samples", "msvc\socwatch_samples.vcxproj", "{110FF129-8B6C-46ED-8D51-CDA2D609B14A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{110FF129-8B6C-46ED-8D51-CDA2D609B14A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{110FF129-8B6C-46ED-8D51-CDA2D609B14A}.Debug|Win32.Build.0 = Debug|Win32
+		{110FF129-8B6C-46ED-8D51-CDA2D609B14A}.Release|Win32.ActiveCfg = Release|Win32
+		{110FF129-8B6C-46ED-8D51-CDA2D609B14A}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

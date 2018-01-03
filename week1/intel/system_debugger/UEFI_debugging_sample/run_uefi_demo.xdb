@@ -1,0 +1,20 @@
+! -----------------------------------------------------------------------------
+!        Copyright (C) 2016 Intel Corporation. All rights reserved.
+!
+! This file is owned by Intel Corporation or its suppliers or licensors,
+! and is furnished under license.  It may only be used or copied in accordance
+! with the terms of that license.  Unless otherwise provided in that license,
+! it is provided AS IS, with no warranties of any kind, express or implied.
+! Except as expressly permitted by that license, neither Intel Corporation nor
+! its suppliers assumes any responsibility or liability for any errors or
+! inaccuracies that may appear herein. Except as expressly permitted by that
+! license, no part of the Software may be reproduced, stored in a retrieval
+! system, transmitted in any form, or distributed by any means without the
+! express written consent of Intel Corporation. Title to this material remains
+! with Intel Corporation or its suppliers and licensors.
+! -----------------------------------------------------------------------------
+SET DIRECTORY "C:\uefi_demo\DriverSampleDxe"
+SET DIRECTORY /SUBSTITUTE="C:\temp\edk2\Build\OvmfIa32\DEBUG_VS2008x86\IA32\MdeModulePkg\Universal\DriverSampleDxe\DriverSampleDxe\DEBUG" "C:\uefi_demo\FV"
+spawn "start C:\uefi_demo\launch_qemu.bat"
+connect "tci=uefi_agent Channel=TCP Server=127.0.0.1 Port=20716"
+efi "watchlist add DriverSample"

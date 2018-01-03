@@ -1,0 +1,210 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns:MSHelp="http://www.microsoft.com/MSHelp/" lang="en-us" xml:lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Debugging UEFI on the MinnowBoard Max* Board">
+<meta name="abstract" content="">
+<meta name="description" content="">
+<meta name="DC.Relation" scheme="URI" content="GUID-49358A19-3703-4371-BC2C-9664E4129464.htm">
+<meta name="prodname" content="">
+<meta name="version" content="2017">
+<meta name="series" content="">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="GUID-0A2A1807-8F63-4110-9378-3676D385813D">
+<meta name="DC.Language" content="en-US">
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css">
+<title>Debugging UEFI on the MinnowBoard Max* Board</title>
+<script src="resources/prism/prism.js"><!----></script>
+<xml>
+<MSHelp:Attr Name="DocSet" Value="Intel"></MSHelp:Attr>
+<MSHelp:Attr Name="Locale" Value="kbEnglish"></MSHelp:Attr>
+<MSHelp:Attr Name="TopicType" Value="kbReference"></MSHelp:Attr>
+<MSHelp:Keyword Index="F" Term="Context-id"></MSHelp:Keyword>
+</xml>
+<link href="resources/prism/prism.css" rel="stylesheet">
+</head>
+<body id="GUID-0A2A1807-8F63-4110-9378-3676D385813D">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+
+
+ 
+  <h1 class="topictitle1">Debugging UEFI on the MinnowBoard Max*
+	 Board</h1>
+ 
+  <!-- 
+  --> 
+   
+  <div><p class="shortdesc"> 
+  </p>
+ 
+	 <p> This section shows how to set up the MinnowBoard
+		Max* build tree, enable the UEFI debug agent, build and flash the firmware and
+		connect to the board over a serial connection. 
+	 </p>
+ 
+	 <div class="section" id="GUID-37CD3DAF-1049-4B39-9A28-CB2CB6CD7BB5"><h2 class="sectiontitle">Prerequisites</h2> 
+		 
+		<ul id="GUID-6AD6F0B7-640D-4539-ADDE-47CBCF130DCE"> 
+		  <li>MinnowBoard Max* board 
+		  </li>
+ 
+		  <li>MinnowBoard Max* FTDI serial cable and drivers 
+		  </li>
+ 
+		  <li> Visual Studio* 2008 installation 
+		  </li>
+ 
+		  <li> iASL compiler and Windows ACPI tools*. Download from 
+			 <a href="https://www.acpica.org/downloads/binary-tools" target="_blank">https://www.acpica.org/downloads/binary-tools</a>
+			 and unzip the archive to 
+			 <span class="filepath">C:\ASL\</span>. 
+		  </li>
+ 
+		  <li> Python* 2.6 or newer installation 
+		  </li>
+ 
+		  <li>Intel&reg; System Studio installation 
+		  </li>
+ 
+		</ul>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-AE77E577-1939-4C4A-8857-757A3B0E8AEB"><h2 class="sectiontitle">Building the MinnowBoard Max* UEFI Firmware with the Debug
+		  Agent</h2> 
+		 
+		<p> 
+		<ol id="GUID-F275FDBB-81F6-42C5-AD08-CFE7E1FBCDB4"> 
+		  <li> Set up the firmware build area following the instructions at 
+			 <a href="https://firmware.intel.com/sites/default/files/MinnowBoardMAXRel0.83ReleaseNotes.txt" target="_blank">https://firmware.intel.com/sites/default/files/MinnowBoardMAXRel0.83ReleaseNotes.txt</a>.
+			 
+		  </li>
+ 
+		  <li> Enable the debug agent by modifying 
+			 <span class="filepath">&lt;MNW2
+				root&gt;\Vlv2TbltDevicePkg\PlatformPkgConfig.dsc</span> and setting 
+			 <span class="filepath">DEFINE SOURCE_DEBUG_ENABLE = TRUE</span> 
+		  </li>
+ 
+		  <li>Build either the 32-bit or the 64-bit debug firmware image
+			 following the instructions at 
+			 <a href="https://firmware.intel.com/sites/default/files/MinnowBoardMAXRel0.83ReleaseNotes.txt" target="_blank">https://firmware.intel.com/sites/default/files/MinnowBoardMAXRel0.83ReleaseNotes.txt</a>
+			 
+		  </li>
+ 
+		  <li> Flash the firmware image following the instructions at 
+			 <a href="https://firmware.intel.com/sites/default/files/Using_the_MinnowBoard_Max_Flash_Utility_1.1.pdf" target="_blank">https://firmware.intel.com/sites/default/files/Using_the_MinnowBoard_Max_Flash_Utility_1.1.pdf</a>
+			 
+		  </li>
+ 
+		  <li> Set up the serial connection to the board following the
+			 instructions at 
+			 <a href="https://firmware.intel.com/sites/default/files/MinnowBoard_MAX_Serial_Console_with_Windows.pdf" target="_blank">https://firmware.intel.com/sites/default/files/MinnowBoard_MAX_Serial_Console_with_Windows.pdf</a>
+			 
+		  </li>
+ 
+		</ol>
+ 
+		</p>
+ 
+		<p> The debug agent connection packages display when the board starts
+		  booting up. The error message about failed HOST connection is expected when the
+		  debugger is not connected. If you do not see the debugger connection attempt,
+		  ensure that the debug agent is enabled (step 2), that the correct binary was
+		  flashed and that flashing the firmware binary has succeeded (step 4). 
+		</p>
+ 
+		<p><a name="IMAGE_EC4311E116534FBABCBCC32FCCD5A4D0"><!-- --></a><img id="IMAGE_EC4311E116534FBABCBCC32FCCD5A4D0" src="GUID-FE5CEB59-0708-4B2B-B5A6-E0706D4FC270-low.png"> 
+		</p>
+ 
+	 </div>
+ 
+	 <div class="section" id="GUID-EA7129CF-FE6A-4135-A22E-1A9374011C20"><h2 class="sectiontitle"> Connecting to the MinnowBoard Max* board Using the Debug Agent
+		  Connection</h2> 
+		 
+		<p> 
+		<ol id="GUID-8DDFBB4B-A003-4938-B7B0-4E62CD61F768"> 
+		  <li>Make sure your board is powered off and the serial cable is
+			 connected. 
+		  </li>
+ 
+		  <li> Select 
+			 <b class="uicontrol">System Debugger (Debug)</b> on your Start page. 
+			 <p> The debugger is launched and the 
+				<b class="uicontrol">Connect to Target</b> dialog box is opened. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li>Choose 
+			 <samp class="codeph">UEFI agent</samp> as hardware probe and 
+			 <samp class="codeph">Serial</samp> as target platform. 
+		  </li>
+ 
+		  <li>In the field 
+			 <b class="uicontrol">Advanced Parameters</b>, enter: 
+			 <p><samp class="codeph">Channel=Serial Port=&lt;<var>your MNW2 port
+					 number</var>&gt; BaudRate=115200 Flow Control=0</samp> 
+			 </p>
+ 
+			 <p>The port number for your MNW2 port is displayed in the device
+				manger. 
+			 </p>
+ 
+		  </li>
+ 
+		  <li> Click 
+			 <b class="uicontrol">Connect</b>. 
+		  </li>
+ 
+		  <li> Power on the board. The debugger connects, and the disassembly of
+			 the first module is displayed. 
+		  </li>
+ 
+		  <li> Click the 
+			 <a name="IMAGE_9DDBA9C03A494824A26E4EF5B3952AAE"><!-- --></a><img id="IMAGE_9DDBA9C03A494824A26E4EF5B3952AAE" src="GUID-17C2D22B-904D-4620-A239-0F2D600F436E-low.gif"> 
+			 <b class="uicontrol">Run</b> button. A list of loaded modules is
+			 printed in the 
+			 <b class="uicontrol">Console</b> window. 
+		  </li>
+ 
+		  <li> You can halt the boot at any time, add an interesting module on
+			 the watchlist, reset the target and the debugger will halt when the module is
+			 loaded. 
+		  </li>
+ 
+		</ol>
+ 
+		</p>
+ 
+		<div class="Note"><h3 class="NoteTipHead">Note</h3> 
+		  <p>The module watchlist is not available when the target is connected
+			 via the JTAG interface. See the 
+			 <a href="https://software.intel.com/en-us/iss-2017-system-debug-user-guide" target="_blank">Intel&reg; System Debugger User's and Reference
+				Guide</a> for how to debug UEFI using JTAG. 
+		  </p>
+ 
+		  <p>Some modules included in the firmware image are delivered in binary
+			 form. If the debugger fails to load the module symbols, the module is one of
+			 the pre-built modules without debug symbols and cannot be debugged with this
+			 setup. 
+		  </p>
+ 
+		</div> 
+	 </div>
+ 
+  </div>
+ 
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong>&nbsp;<a href="GUID-49358A19-3703-4371-BC2C-9664E4129464.htm">Intel&reg; System Debugger UEFI Debugging Tutorial</a></div>
+</div>
+<div></div>
+
+</body>
+</html>

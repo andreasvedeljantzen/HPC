@@ -1,0 +1,21 @@
+#include <stdio.h>
+#if defined(__MACH__) && defined(__APPLE__)
+#include <Accelerate/Accelerate.h>
+#else
+#include <cblas.h>
+#endif
+
+int main(void) {
+	
+	int i, incx,n;
+	double a, x[5] = {2.0,2.0,2.0,2.0,2.0};
+	
+	/* Scale the vector x bt 3.0 */
+	n = 5; 
+	a = 3.0;
+	incx = 1;
+	cblas_dscale(n,a,x,incx);
+	
+	return;
+}
+

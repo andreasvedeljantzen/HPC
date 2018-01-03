@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "compiler_matrix_multiply", "compiler_matrix_multiply\compiler_matrix_multiply.vcxproj", "{8364CA63-3579-4A91-88EE-AD5DE9B65BC0}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cilk_matrix_multiply", "cilk_matrix_multiply\cilk_matrix_multiply.vcxproj", "{7CECA38A-DDA5-4B75-BB41-15F2D716B0E4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mkl_matrix_multiply", "mkl_matrix_multiply\mkl_matrix_multiply.vcxproj", "{469A48A2-87DA-4369-A31B-8496C302ED63}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8364CA63-3579-4A91-88EE-AD5DE9B65BC0}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8364CA63-3579-4A91-88EE-AD5DE9B65BC0}.Debug|Win32.Build.0 = Debug|Win32
+		{8364CA63-3579-4A91-88EE-AD5DE9B65BC0}.Release|Win32.ActiveCfg = Release|Win32
+		{8364CA63-3579-4A91-88EE-AD5DE9B65BC0}.Release|Win32.Build.0 = Release|Win32
+		{7CECA38A-DDA5-4B75-BB41-15F2D716B0E4}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7CECA38A-DDA5-4B75-BB41-15F2D716B0E4}.Debug|Win32.Build.0 = Debug|Win32
+		{7CECA38A-DDA5-4B75-BB41-15F2D716B0E4}.Release|Win32.ActiveCfg = Release|Win32
+		{7CECA38A-DDA5-4B75-BB41-15F2D716B0E4}.Release|Win32.Build.0 = Release|Win32
+		{469A48A2-87DA-4369-A31B-8496C302ED63}.Debug|Win32.ActiveCfg = Debug|Win32
+		{469A48A2-87DA-4369-A31B-8496C302ED63}.Debug|Win32.Build.0 = Debug|Win32
+		{469A48A2-87DA-4369-A31B-8496C302ED63}.Release|Win32.ActiveCfg = Release|Win32
+		{469A48A2-87DA-4369-A31B-8496C302ED63}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

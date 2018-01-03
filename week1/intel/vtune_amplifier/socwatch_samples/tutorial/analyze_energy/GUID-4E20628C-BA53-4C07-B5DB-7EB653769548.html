@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="DC.Type" content="topic" />
+<meta name="DC.Title" content="Interpret Energy Data Results in VTune Amplifier for Systems" />
+<meta name="DC.Relation" scheme="URI" content="GUID-836E3657-B12F-4773-8F63-CBE7AB94F3F8.html" />
+<meta name="DC.Relation" scheme="URI" content="http://www.intel.com/software/products/softwaredocs_feedback" />
+<meta name="prodname" content="VTune Amplifier" />
+<meta name="version" content="" />
+<meta name="series" content="" />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="GUID-4E20628C-BA53-4C07-B5DB-7EB653769548" />
+<meta name="DC.Language" content="en-US" />
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css" />
+<title>Interpret Energy Data Results in VTune Amplifier for Systems</title>
+<script src="resources/prism/prism.js"><!----></script>
+<link href="resources/prism/prism.css" rel="stylesheet" />
+</head>
+<body class="no-rel-links" id="GUID-4E20628C-BA53-4C07-B5DB-7EB653769548">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+<p id="header_text" style="margin-bottom : 20pt"><em>Intel&reg; VTune&#8482; Amplifier for Systems</em></p>
+
+
+<h1 class="topictitle1">Interpret Energy Data Results in
+    VTune Amplifier for Systems</h1>
+<div id="GUID-2555E064-BB06-4D55-862E-99743F10F14A"><p><img height="32" src="GUID-AE4B0E82-637D-4E88-949B-A1F6CFB43219-low.gif" width="32" />
+      After you import the 
+      <samp class="codeph">idletest.sww1</samp> and 
+      <samp class="codeph">piconsoletest.sww1</samp> result files to the Intel&reg; VTune&#8482;
+      Amplifier project, the collected results open in the 
+      <b class="uicontrol">Platform Power Analysis</b> viewpoint. 
+    </p>
+<p>To interpret the performance data provided during the
+      energy analysis, follow the steps below: 
+    </p>
+<ol id="GUID-B90CA9BB-04C2-44CE-A95D-99B6887AF086"><li><p><a href="#RESULT_SUMMARY">Review
+            the Summary page for each analysis result</a>. 
+        </p>
+</li>
+<li><p><a href="#ACTIVE_STATE">Identify
+            when each core is active and inactive</a>. 
+        </p>
+</li>
+<li><p><a href="#WAKEUP">View
+            the processor wake-ups and identify causes</a>. 
+        </p>
+</li>
+<li><p><a href="#COMPARE_RESULT">Compare
+            the analysis results</a>. 
+        </p>
+</li>
+</ol>
+<div class="Note"><h3 class="NoteTipHead">Note</h3> <p>The screen shots and energy usage data provided in this tutorial are
+        created from data gathered from a Windows* system with 2 CPU cores and with
+        Wi-Fi disabled during collection. Your data may vary depending on the number
+        and type of CPU cores on your target system and transient system activity while
+        collection occurred. 
+      </p>
+</div>
+<div class="section" id="RESULT_SUMMARY"><h2 class="sectiontitle">Review Result Summary</h2><p>Open the 
+        <b class="uicontrol">r000</b> tab for the analysis result for the idle
+        system and select the 
+        <b class="uicontrol">Summary</b> tab. The first section of the 
+        <b class="uicontrol">Summary</b> window displays the summary statistics
+        on the overall collection run time execution per power analysis metrics: 
+      </p>
+<div class="Note"><h3 class="NoteTipHead">Tip</h3> <p>Hover over the question mark icon 
+          <img src="GUID-B2B52CF0-EA7C-4172-9287-C4AA69D0623F-low.png" /> to view a description
+          of the metric. 
+        </p>
+</div>
+<div class="fignone" id="GUID-23108081-A648-484A-BBC3-849BACC96B00"><img src="GUID-3867FF9F-4065-4513-8E41-972881E56BF3-low.png" /></div>
+<p>The 
+        <strong>Elapsed Time per Core Sleep State Histogram</strong> graph shows the
+        amount of time spent in each sleep state. In the idle system analysis, most of
+        the time was spent in C3, the deepest sleep state. 
+      </p>
+<div class="fignone" id="GUID-158CD0EA-3611-4EBD-9BDF-923BAED55941"><img src="GUID-A865B197-28C8-4BDB-8418-454C879662D7-low.png" /></div>
+<p>Switch to the 
+        <b class="uicontrol">r001</b> tab for the analysis result collected
+        running the Pi Console program and select the 
+        <b class="uicontrol">Summary</b> tab for this result. You will see that
+        there is a much smaller amount of time spent in active core states (non-C0
+        states). 
+      </p>
+<div class="fignone" id="GUID-D66CFB6D-515C-4247-A666-FD22DEE2C9A8"><img src="GUID-A96B8A2C-305C-408B-9CA8-30ADE9CC5244-low.png" /></div>
+<p>Review the 
+        <b class="uicontrol">Elapsed Time per Core Sleep State Histogram</b> and
+        observe that there is a significant amount of time spent in the active (C0)
+        core state. 
+      </p>
+<div class="fignone" id="GUID-F950A8D5-319D-41A0-9698-6A664CFF9337"><img src="GUID-1D26E040-385C-4841-8865-4FB4E973F4A7-low.png" /></div>
+</div>
+<div class="section" id="ACTIVE_STATE"><h2 class="sectiontitle">Identify Cores in Active States</h2><p> Switch to the 
+        <b class="uicontrol">CPU C/P States</b> tab to identify cores with the
+        highest time spent in the active C0 state. Spending more time in deeper sleep
+        states (C1-Cn) provides greater power savings. Examining the relationship of
+        activity between cores illustrates how effectively an application or system
+        process is utilizing multiple threads. 
+      </p>
+<div class="Note"><h3 class="NoteTipHead">Tip</h3> <ul id="GUID-2E61F7AD-77E6-4DC3-9365-D80B9198C266"><li>Click the expand arrows 
+            <img src="GUID-BA49DA5A-0828-482B-8E50-97A92B13D585-low.gif" /> in the
+            table to view more details in each column. 
+          </li>
+<li>Click the plus sign 
+            <img src="GUID-D97809EA-D0C0-4C92-8E0A-D7B2A0292113-low.jpg" /> next to 
+            <b class="uicontrol">package_0</b> to expand the visualization to
+            include the 
+            <b class="uicontrol">core_1</b> and 
+            <b class="uicontrol">core_0</b> timelines. 
+          </li>
+</ul>
+</div>
+<p>The following example shows the activity collected when the system was
+        idle (r000): 
+      </p>
+<div class="fignone" id="GUID-61DAA18A-349E-4DE4-BEC1-4B0D56E33A06"><img src="GUID-2E6E5CFF-4F0A-4BB9-A1F3-378DAB86160E-low.png" width="700" /></div>
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-1C693975-D8FE-4039-A789-FE3428448D69" width="100%" frame="void" border="1" rules="none" cellspacing="2"><tbody><tr><td class="noborder" valign="top" width="7.262164124909224%"><p id="GUID-46B320A2-46E4-47DA-ADDA-1BF3686EE827"><img height="22" src="GUID-A4AF9F6D-C2F3-4CC2-BC62-4EF73CA76B7B-low.jpg" width="22" alt="1" /></p>
+</td>
+<td class="noborder" valign="top" width="92.73783587509078%"><p>By default, VTune Amplifier displays data
+                  grouped by core and sorted by CPU time spent in the deepest C-state in the
+                  descending order. In this example, you can see that the most time was spent in
+                  ACPI C3, the deepest sleep state for the package core, and C7, the deepest
+                  sleep state for the hardware core. Both 
+                  <strong>core_1</strong> and 
+                  <strong>core_0</strong> spent approximately 57 seconds of the 60 second
+                  run time in the deep sleep state. 
+                </p>
+</td>
+</tr>
+<tr><td class="noborder" valign="top" width="7.262164124909224%"><p id="GUID-1DE15FF1-DE34-4C25-948E-1942336D6755"><img height="22" src="GUID-D8DBA40B-558C-4899-B9B6-9068F1CAE124-low.jpg" width="22" alt="2" /></p>
+</td>
+<td class="noborder" valign="top" width="92.73783587509078%"><p id="GUID-9556A181-47EA-4DFB-AC3C-EE05789CBB3F">Energy
+                  efficiency is optimized when the package can enter a sleep state. The package
+                  must remain active if at least one core is active. In this example, the package
+                  is able to spend time in the C7 sleep state, which is represented by the
+                  darkest green. 
+                </p>
+</td>
+</tr>
+<tr><td class="noborder" valign="top" width="7.262164124909224%"><p id="GUID-D1E00998-5679-4B94-8D97-42906FB8FDCD"><img height="22" src="GUID-EC89F6F7-1D37-4D59-82B5-710853E15391-low.jpg" width="22" alt="3" /></p>
+</td>
+<td class="noborder" valign="top" width="92.73783587509078%"><p id="GUID-195640EF-EFB1-4400-9DF1-C96AB2736EB5">The time
+                  spent in the active state, C0, is represented in white in the 
+                  <strong>core_0</strong> and 
+                  <strong>core_1</strong> lines. In this example, the time spent in the
+                  active state is lined up for both cores. This optimizes the time spent in
+                  active states and improves overall energy efficiency, as seen in the 
+                  <strong>package_0</strong> line. 
+                </p>
+</td>
+</tr>
+<tr><td class="noborder" valign="top" width="7.262164124909224%"><p id="GUID-AE1B923B-A4C5-48BE-BE1E-0B5C878AE0CF"><img height="22" src="GUID-C65E00A6-6283-46D0-AE5E-99DBE68C9379-low.jpg" width="22" alt="4" /></p>
+</td>
+<td class="noborder" valign="top" width="92.73783587509078%"><p id="GUID-12C679E9-66E9-44C2-9CFD-6C88095C9165">The system
+                  hardware was able to spend most of the collection time in the C7 sleep state.
+                  The spikes to more active states coincide with similar spikes on the package
+                  and core side. Having these similar spikes shows that a system is
+                  well-synchronized between the hardware and operating system. 
+                </p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Switch to 
+        <strong>r001</strong> to view the 
+        <strong>CPU C/P States</strong> tab for the data collected when the Pi Console
+        program was running, as shown in the example below. 
+      </p>
+<div class="fignone" id="GUID-9466238B-0B1F-47C9-980F-630016C80755"><img src="GUID-0F2B7589-065D-4657-9A32-B91C3744FBCA-low.png" width="700" /></div>
+
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-DBE60435-B068-46DF-81B4-39BBAA817E16" width="100%" frame="void" border="1" rules="none" cellspacing="2"><tbody><tr><td class="noborder" valign="top" width="7.262164124909224%"><p><img height="22" src="GUID-A4AF9F6D-C2F3-4CC2-BC62-4EF73CA76B7B-low.jpg" width="22" alt="1" /></p>
+</td>
+<td class="noborder" valign="top" width="92.73783587509078%"><p>In this example, you can see that the
+                  most time was spent in ACPI C0, the active state for the package core, and C0,
+                  the active state for the hardware core. On the package side, 
+                  <strong>core_1</strong> spent 45.932 seconds in the C0 state and 23.390
+                  seconds in the C3 sleep state. 
+                  <strong>core_0</strong> spent 29.897 seconds in the C0 state and 40.471
+                  seconds in the C3 sleep state. On the hardware side, the results were similar
+                  with 
+                  <strong>core_1</strong> spending more time in the active state and 
+                  <strong>core_0</strong> spending more time in the sleep state. 
+                </p>
+</td>
+</tr>
+<tr><td class="noborder" valign="top" width="7.262164124909224%"><p><img height="22" src="GUID-D8DBA40B-558C-4899-B9B6-9068F1CAE124-low.jpg" width="22" alt="2" /></p>
+</td>
+<td class="noborder" valign="top" width="92.73783587509078%"><p>In this example, the package was unable to enter a sleep
+                  state at any time. All package time was spent in the C0 active state. 
+                </p>
+</td>
+</tr>
+<tr><td class="noborder" valign="top" width="7.262164124909224%"><p><img height="22" src="GUID-EC89F6F7-1D37-4D59-82B5-710853E15391-low.jpg" width="22" alt="3" /></p>
+</td>
+<td class="noborder" valign="top" width="92.73783587509078%"><p>In this example, core_0 and core_1 alternated between the
+                  active and sleep states. The system scheduled the application tasks so that the
+                  activity switched between cores. As a result, one core was always active, which
+                  caused the package to continue to be active for the duration of the collection.
+                  
+                </p>
+</td>
+</tr>
+<tr><td class="noborder" valign="top" width="7.262164124909224%"><p><img height="22" src="GUID-C65E00A6-6283-46D0-AE5E-99DBE68C9379-low.jpg" width="22" alt="4" /></p>
+</td>
+<td class="noborder" valign="top" width="92.73783587509078%"><p>The system hardware alternated between the active C0 state
+                  and the deep sleep C7 state. The activity on the hardware coincided with the
+                  activity on the operating system. When one operating system core was active,
+                  the corresponding hardware core was also active. 
+                </p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>You can zoom in on a particular time frame to identify the processes
+        that caused system activity. Click and drag to select the time for which you
+        would like to see more detail. A menu appears with a 
+        <b class="uicontrol">Zoom In on Selection</b> option. 
+      </p>
+<div class="fignone" id="GUID-6168BCBB-DEDA-4D51-8FDD-DA24B629B3EB"><img src="GUID-74F42110-565B-4083-8E5E-A7CE2822D3D0-low.png" /></div>
+<p>By viewing only a small section of the data, you can more easily see
+        the transitions between the active and inactive states and notice that the
+        cores are not active at the same time. 
+      </p>
+<div class="fignone" id="GUID-DE31CE1A-E554-4686-A674-0EEA081C7E47"><img src="GUID-DB59FB8F-BFE8-4202-B4DC-186BC6C95102-low.png" /></div>
+</div>
+<div class="section" id="WAKEUP"><h2 class="sectiontitle">Identify Processor Wake-ups and Possible Causes</h2><p>Switch to the Core Wake-ups pane and group the data by the 
+        <strong>Wake-up Reason/Wake-up Object/Core</strong> to identify causes of the
+        processor wake-ups. The table at the top of the tab lists the wake-up reasons. 
+      <ul id="GUID-C9D3EE3D-5C4A-461B-89A0-6A912FA4DB62"><li>RDY: Ready event 
+        </li>
+<li>IPI: Inter-processor interrupt 
+        </li>
+<li>CLK: Clock interrupt 
+        </li>
+<li>DPC: Deferred procedure call 
+        </li>
+<li>INT: Hardware interrupt 
+        </li>
+<li>Unknown: The wake-up reason could not be identified. 
+        </li>
+</ul>
+</p>
+<p>Each core has a wake-up band that represents the wake-up objects that
+        cause the core to switch from a sleep state to an active state. Each wake-up
+        object type is represented using a unique color. By hovering over the band, you
+        can view all of the wake-up objects at that point in time, including details
+        such as wake-up object type, start time, and duration. 
+      </p>
+<div class="fignone" id="GUID-51D5C3CA-FF3A-4297-8964-2E7C3FD1D0A5"><img src="GUID-34E4E23B-BBCB-4743-B00B-CD972E7836D0-low.png" width="500" /></div>
+<p>In the grid, you can select a wake-up object with the highest Wake-up
+        Count, right-click, and select the 
+        <strong>Filter In by Selection</strong> from the context menu. VTune Amplifier
+        updates the grid and timeline displaying the data relevant only for the
+        selected object. The example below shows wake-ups per core initiated by the
+        clock (CLK) object selected in the grid for the Pi Console program analysis. 
+      </p>
+<div class="fignone" id="GUID-262637FD-0058-41C7-B16F-CC1B58CC678C"><img src="GUID-8BCA2DA5-88BC-4481-BC5D-F27D7F2BF708-low.png" width="500" /></div>
+</div>
+<div class="section" id="COMPARE_RESULT"><h2 class="sectiontitle">Compare Analysis Results</h2><p>Use the following steps to open a comparison of the idle system
+        collection result (r000) and the Pi Console program collection result (r001): 
+      </p>
+<ol id="GUID-0FAD2803-8D4A-4043-A74E-2AC6657D7967"><li>Close the results tabs if they are open. You cannot compare results
+          if one or both are already open. 
+        </li>
+<li><p>Click the 
+            <b class="uicontrol">Compare Results</b><img src="GUID-1D326024-DCC3-447C-AF3C-41E984086FA8-low.jpg" /> button on
+            the top toolbar. 
+          </p>
+<p>The 
+            <b class="uicontrol">Compare</b> tab opens. 
+          </p>
+</li>
+<li><p>Click the 
+            <b class="uicontrol">Browse</b> button next to the 
+            <b class="uicontrol">Result 1</b> line. 
+          </p>
+</li>
+<li><p>Navigate to the location of the idle system analysis result file,
+            select the 
+            <samp class="codeph">r000.amplxe</samp> result file, and click 
+            <b class="uicontrol">Open</b>. 
+          </p>
+<p>The location of the project and result files was established when
+            you created the new project. 
+          </p>
+</li>
+<li><p>Click the 
+            <b class="uicontrol">Browse</b> button next to the 
+            <b class="uicontrol">Result 2</b> line. 
+          </p>
+</li>
+<li><p>Navigate to the location of the Pi Console program analysis result
+            file, select the 
+            <samp class="codeph">r001.amplxe</samp> result file, and click 
+            <b class="uicontrol">Open</b>. 
+          </p>
+</li>
+<li><p>Click the 
+            <b class="uicontrol">Compare</b> button. 
+          </p>
+<div class="fignone" id="GUID-09BCC47D-3D86-4BB2-9EAB-1A18E8DC1710"><img src="GUID-72D90DFC-338B-43BD-9184-05E37614BFE3-low.png" width="600" /></div>
+<p>A new tab opens displaying the 
+            <b class="uicontrol">Platform Power Analysis</b> viewpoint. 
+          </p>
+</li>
+</ol>
+<p>The 
+        <b class="uicontrol">Summary</b> window of the 
+        <b class="uicontrol">Platform Power Analysis</b> viewpoint displays
+        statistics on the overall collection run time execution per power analysis
+        metrics. The result for the idle system analysis shows on the left of the
+        summary statistics and the result for the data collected when the Pi Console
+        program was running appears on the right. 
+      </p>
+<p>The 
+        <b class="uicontrol">Wake-ups/sec per Core</b> table shows that the total
+        time spent in non-C0 states (sleep states) was much greater when the system was
+        idle than when the Pi Console program was running. 
+      </p>
+<div class="fignone" id="GUID-08F9D248-FFCD-4DA7-82A4-2A1C74DE5D09"><img src="GUID-F2329B00-FDD6-4AF4-96A2-038E398F39A6-low.png" /></div>
+<p>You can also see that the total wake-up count was significantly higher
+        when the system was idle. This is because the system was in an active state for
+        most of the time the Pi Console program was executing and therefore there was
+        no transition, or wake-up, from a sleep state to an active state during that
+        collection. 
+      </p>
+</div>
+<div class="section" id="GUID-CE57A721-E6ED-47B8-92E8-77208D7398F7"><h2 class="sectiontitle">Key Terms</h2><p><a href="GUID-CB6C7239-6896-4228-81DF-FA0631F7D1F3.html#ELAPSED_TIME">Elapsed
+          Time</a></p>
+<p><a href="GUID-CB6C7239-6896-4228-81DF-FA0631F7D1F3.html#C_STATE">C-State</a></p>
+<p><a href="GUID-CB6C7239-6896-4228-81DF-FA0631F7D1F3.html#P_STATE">P-State</a></p>
+</div>
+</div>
+<div></div>
+</body>
+</html>

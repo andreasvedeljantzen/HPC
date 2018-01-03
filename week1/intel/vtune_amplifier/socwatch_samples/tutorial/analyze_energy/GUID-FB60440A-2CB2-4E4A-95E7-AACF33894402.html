@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="DC.Type" content="topic" />
+<meta name="DC.Title" content="Tutorial: Analyzing Energy Usage on a Windows* Platform" />
+<meta name="DC.Relation" scheme="URI" content="GUID-BCBA7058-F2F3-4E5D-B2CD-EAA69B913AE2.html" />
+<meta name="DC.Relation" scheme="URI" content="GUID-D2009DFB-FDD0-41CC-B9CD-D273822AB964.html" />
+<meta name="DC.Relation" scheme="URI" content="GUID-836E3657-B12F-4773-8F63-CBE7AB94F3F8.html" />
+<meta name="DC.Relation" scheme="URI" content="GUID-5C085B22-9A53-4A55-A77F-247CC3DB0ED6.html" />
+<meta name="DC.Relation" scheme="URI" content="GUID-CB6C7239-6896-4228-81DF-FA0631F7D1F3.html" />
+<meta name="prodname" content="VTune Amplifier" />
+<meta name="version" content="" />
+<meta name="series" content="" />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="GUID-FB60440A-2CB2-4E4A-95E7-AACF33894402" />
+<meta name="DC.Language" content="en-US" />
+<link rel="stylesheet" type="text/css" href="intel_css_styles.css" />
+<title>Tutorial: Analyzing Energy Usage on a Windows* Platform</title>
+<script src="resources/prism/prism.js"><!----></script>
+<xml>
+<MSHelp:Attr xmlns:MSHelp="http://www.microsoft.com/MSHelp/" Name="InformationType" Value="RootPage"></MSHelp:Attr>
+</xml>
+<link href="resources/prism/prism.css" rel="stylesheet" />
+</head>
+<body class="no-rel-links" id="GUID-FB60440A-2CB2-4E4A-95E7-AACF33894402">
+ <!-- ==============(Start:NavScript)================= -->
+ <script src="NavScript.js" language="JavaScript1.2" type="text/javascript"></script>
+ <script language="JavaScript1.2" type="text/javascript">WriteNavLink(0);</script>
+ <!-- ==============(End:NavScript)================= -->
+
+
+<h1 class="topictitle1"><img src="GUID-59DFA90A-7EFE-471F-87B3-6B240755CE73-low.png" /> Tutorial: Analyzing
+    Energy Usage on a Windows* Platform</h1>
+<div><p><strong>Intel&reg; VTune&#8482; Amplifier for Systems (Windows* OS version)</strong></p>
+<p><strong>Intel&reg; System Studio</strong></p>
+<p id="GUID-55ED7C8B-907B-466F-8F79-DC6A12222A06"><a class="underlined" href="GUID-BCBA7058-F2F3-4E5D-B2CD-EAA69B913AE2.html#GUID-BCBA7058-F2F3-4E5D-B2CD-EAA69B913AE2">Legal Information</a></p>
+<p> Discover how to optimize software for extended battery life using the
+      Intel&reg; Energy Profiler, a feature of 
+      <span>Intel&reg; VTune&#8482; Amplifier</span>
+      for Systems. The Intel Energy Profiler provides a visual representation of the
+      data gathered by the Intel SoC Watch collector on a target system. 
+    </p>
+<p> This document applies to the energy analysis of a Windows* OS target
+      system using Intel System Studio (including VTune Amplifier for Systems) that
+      is installed on a Windows OS host system. For additional tutorials, see 
+      <a href="https://software.intel.com/en-us/articles/intel-vtune-amplifier-tutorials" target="_blank">Intel&reg; VTune&#8482; Amplifier Tutorials</a>. 
+    </p>
+<p>
+<div class="tablenoborder"><table cellpadding="4" summary="" id="GUID-90830C46-08BF-4A95-A9F9-2465BA185207" frame="border" border="1" cellspacing="0" rules="all"><tbody><tr><td class="cellrowborder" valign="top" width="23.4192037470726%"><p><strong>About This Tutorial</strong></p>
+</td>
+<td class="cellrowborder" valign="top" width="76.58079625292741%"><p>This tutorial guides you through the basic steps required for
+                setting up your Windows system for analysis, running an analysis on a Windows
+                target system, and viewing the results using VTune Amplifier for Systems on a
+                Windows host system. 
+              </p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="23.4192037470726%"><p><strong>Estimated Duration</strong></p>
+</td>
+<td class="cellrowborder" valign="top" width="76.58079625292741%"><p><ul id="GUID-91EF2826-A124-4A0B-A0D2-17CB18939963"><li>10 minutes: Preparing your target Windows system for energy
+                  analysis. 
+                </li>
+<li>10 minutes: Collecting energy data on the target system. 
+                </li>
+<li> 10 minutes: Viewing and interpreting the results on a host
+                  Windows OS system with Intel System Studio and VTune Amplifier for Systems
+                  installed. 
+                </li>
+</ul>
+</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="23.4192037470726%"><p><strong>Learning Objectives</strong></p>
+</td>
+<td class="cellrowborder" valign="top" width="76.58079625292741%"><p>After you complete this tutorial, you will
+                be able to: 
+              </p>
+<p><ul id="GUID-211B4EDC-3D3C-4E43-822F-8C4719BE529B"><li><a href="GUID-6DE9E7B5-EB6B-49F5-927E-0939C0FE6942.html">Set up Windows Host and Target
+                    Systems</a></li>
+<li><a href="GUID-543B9227-9BCF-4911-A302-71B48DF72ACE.html">Run Energy Analysis on a
+                    Target System</a></li>
+<li><a href="GUID-3C26E463-F92E-4D52-9140-0790EBAD10D4.html">Import and View Result Files
+                    on a Host System</a></li>
+<li><a href="GUID-4E20628C-BA53-4C07-B5DB-7EB653769548.html">Interpret Energy Data Results
+                    in VTune Amplifier for Systems</a></li>
+</ul>
+</p>
+</td>
+</tr>
+<tr><td class="cellrowborder" valign="top" width="23.4192037470726%"><p><strong>More Resources</strong></p>
+</td>
+<td class="cellrowborder" valign="top" width="76.58079625292741%"><p><ul id="GUID-855D5CAE-5D4C-4573-B58E-9A9CD998728C"><li> The Intel&reg; System Studio user forum: 
+                  <a href="https://software.intel.com/en-us/forums/intel-system-studio" target="_blank">https://software.intel.com/en-us/forums/intel-system-studio</a></li>
+<li> The Intel Developer Zone is a site devoted to software
+                  development tools, resources, forums, blogs, and knowledge bases, see 
+                  <a href="http://software.intel.com" target="_blank">http://software.intel.com</a></li>
+<li>The Intel Software Documentation Library is part of the
+                  Intel Developer Zone and is an online collection of Release Notes, User and
+                  Reference Guides, White Papers, Help, and Tutorials for Intel software products
+                  
+                  <a href="https://software.intel.com/en-us/intel-software-technical-documentation" target="_blank">https://software.intel.com/en-us/intel-software-technical-documentation</a></li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+<p><a href="GUID-836E3657-B12F-4773-8F63-CBE7AB94F3F8.html">Start Here</a></p>
+</div>
+<div></div>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Type" content="topic"/>
+<meta name="DC.Title" content="Intel® VTune™ Amplifier SoCWatch Sample"/>
+<meta name="prodname" content="VTune Amplifier"/>
+<meta name="version" content="2016"/>
+<meta name="DC.Format" content="XHTML"/>
+<meta name="DC.Identifier" content="readme"/>
+<meta name="DC.Language" content="en-US"/>
+<link rel="stylesheet" type="text/css" href="resources/intel_gsp_styles.css"/>
+<title>Intel® VTune™ Amplifier SoCWatch Sample</title>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1"/>
+<!-- BEGIN SCRIPTS FOR EXPAND/COLLAPSE FUNCTIONALITY -->
+<script src="resources/jquery-1.11.1.min.js"><!----></script>
+<script src="resources/hide-show.js"><!----></script>
+<!-- END SCRIPTS FOR EXPAND/COLLAPSE FUNCTIONALITY -->
+<!-- Prism script to support syntax highlighting-->
+<script src="resources/prism/prism.js"><!----></script>
+
+<!-- prism.css stylesheet to support syntax highlighting-->
+<link href="resources/prism/prism.css" rel="stylesheet"/>
+</head>
+<body id="readme"><a name="readme"><!-- --></a>
+
+
+<div id="banner">
+<div id="bannerblock"><img src="resources/intel_logo.png" class="intellogo" alt="Intel logo"/>
+<!--No product image to be included-->
+<h1 class="title">Intel® VTune™ Amplifier SoCWatch Sample</h1>
+</div>
+</div>
+<div id="contentblock">
+<div id="mainmenu"><h3>Contents</h3><p><a class="mainmenulinks" href="#GUID-4E1826D8-7999-4E43-ACAC-3A074D6C8001"/></p>
+<p><a class="mainmenulinks" href="#GUID-C9E00BA2-CC4D-45A5-938B-517A6822074E">System Requirements</a></p>
+<p><a class="mainmenulinks" href="#GUID-105FAF0C-5E28-4451-98D9-2E241B90C27E">Build Instructions</a></p>
+<p><a class="mainmenulinks" href="#GUID-A15FE295-5651-49F6-AF52-71979C68D2B1">Related Tutorial</a></p>
+<p><a class="mainmenulinks" href="#GUID-1DFA2935-87C1-4F00-A5C9-B8BA2C9D736A"> Legal Information</a></p>
+</div>
+<div id="GUID-4E1826D8-7999-4E43-ACAC-3A074D6C8001"><p> The <strong>SoCWatch</strong> sample is a simple numerical computation of Pi designed to demonstrate the impact of CPU operations on the power and energy of any Windows* system. Use this program with Intel® Energy Profiler tutorials to better understand and improve power management on modern systems. </p>
+</div>
+<div id="GUID-C9E00BA2-CC4D-45A5-938B-517A6822074E">
+<h2><a name="GUID-C9E00BA2-CC4D-45A5-938B-517A6822074E"><!-- --></a>System Requirements</h2>
+<a name="GUID-C2D1A6B2-CC28-4FA0-8803-2D510BF54FE2"><!-- --></a>
+<ul id="GUID-C2D1A6B2-CC28-4FA0-8803-2D510BF54FE2"><li>Hardware: Refer to the Intel® SoC Watch for Windows* OS User's Guide for hardware requirements </li>
+<li>Software: <a name="GUID-0E8EDAB5-5AC6-4453-9749-A2AAE6D1BD33"><!-- --></a>
+<ul id="GUID-0E8EDAB5-5AC6-4453-9749-A2AAE6D1BD33"><li>Microsoft Windows* OS </li>
+<li>Microsoft Visual Studio 2012* standard edition or later. Note: Depending on your version of Visual Studio, you may need to install the MFC library for Visual Studio.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="GUID-105FAF0C-5E28-4451-98D9-2E241B90C27E">
+<h2><a name="GUID-105FAF0C-5E28-4451-98D9-2E241B90C27E"><!-- --></a>Build Instructions</h2>
+<p>A pre-built binary already exists in the <samp class="codeph">socwatch_samples/bin</samp> directory. The pre-built binary is be used in the tutorial. </p>
+<p>Use the following steps to create a new build: </p>
+<a name="GUID-5B086DF0-B9EE-45C8-974C-E9A9C2F82177"><!-- --></a>
+<ul id="GUID-5B086DF0-B9EE-45C8-974C-E9A9C2F82177"><li>Using Microsoft Visual Studio 2010 or 2012: <a name="GUID-384FBC39-9957-4DF2-8224-2A0E064D7AC8"><!-- --></a>
+<ol id="GUID-384FBC39-9957-4DF2-8224-2A0E064D7AC8"><li>Open the <samp class="codeph">socwatch_samples.sln</samp> file. </li>
+<li>Choose the <strong>Debug</strong> configuration option from the <strong>Configuration Manager</strong>. </li>
+<li><p>Select the <strong>Build &gt; Build Solution</strong> action. </p>
+<p>The new binary is available from the <samp class="codeph">bin</samp> directory after the build succeeds. </p>
+</li>
+</ol>
+</li>
+<li>Using a command prompt: <a name="GUID-F98CB1E9-33D6-4134-8B74-BF8EAD22622F"><!-- --></a>
+<ol id="GUID-F98CB1E9-33D6-4134-8B74-BF8EAD22622F"><li>Enable your Microsoft Visual Studio compiler environment. </li>
+<li>Open the Microsoft Visual Studio command prompt. </li>
+<li>Navigate to the <samp class="codeph">socwatch_samples</samp> folder. </li>
+<li>Compile the binary using the following command: <samp class="codeph">Build.bat</samp></li>
+<li>Clean the build using the following command: <samp class="codeph">Build.bat clean</samp></li>
+</ol>
+</li>
+</ul>
+</div>
+<div id="GUID-A15FE295-5651-49F6-AF52-71979C68D2B1">
+<h2><a name="GUID-A15FE295-5651-49F6-AF52-71979C68D2B1"><!-- --></a>Related Tutorial</h2>
+<p>The <strong>SoCWatch</strong> sample for the VTune Amplifier is accompanied by the following tutorial: </p>
+<div class="p"><a name="GUID-C6AC400B-1C5D-41AC-9AB6-C7858CB8CA53"><!-- --></a>
+<ul id="GUID-C6AC400B-1C5D-41AC-9AB6-C7858CB8CA53"><li><p><a href="./tutorial/analyze_energy/index.htm" target="_blank">Analyzing Energy Usage on a Windows* Platform</a>: Identify energy usage on an idle system and a system running an application. </p>
+</li>
+</ul>
+</div>
+</div>
+<div id="GUID-1DFA2935-87C1-4F00-A5C9-B8BA2C9D736A">
+<h2><a name="GUID-1DFA2935-87C1-4F00-A5C9-B8BA2C9D736A"><!-- --></a> Legal Information</h2>
+<p>Intel, the Intel logo, VTune and Xeon Phi are trademarks of Intel Corporation in the U.S. and/or other countries. </p>
+<p>* Other names and brands may be claimed as the property of others. </p>
+<p>Microsoft, Windows, and the Windows logo are trademarks, or registered trademarks of Microsoft Corporation in the United States and/or other countries. </p>
+<p>OpenCL and the OpenCL logo are trademarks of Apple Inc. used by permission from Khronos. </p>
+<p>© 2016, Intel Corporation </p>
+<p><span/></p>
+<p><em>The original source for this example is Copyright (c) 1994-2008 John E. Stone All rights reserved.</em></p>
+<p><em>Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:</em></p>
+<div class="p"><a name="GUID-1DD3EBE2-5DA2-4061-B6F9-C5060D70B2B6"><!-- --></a>
+<ol id="GUID-1DD3EBE2-5DA2-4061-B6F9-C5060D70B2B6"><li><em>Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.</em></li>
+<li><em>Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.</em></li>
+<li><em>The name of the author may not be used to endorse or promote products derived from this software without specific prior written permission.</em></li>
+</ol>
+</div>
+<p><em>THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</em></p>
+</div>
+</div>
+
+</body>
+</html>
