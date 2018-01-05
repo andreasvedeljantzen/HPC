@@ -1,0 +1,55 @@
+#!/bin/bash
+
+arr=(1600 1600 1600)
+
+echo "\nnow ready for performance test\n"
+
+echo "\nstart matmult_mnk\n"
+for i in "${arr[@]}"
+do
+    matmult_c.gcc mnk $i $i $i
+    -o test.mnk.er -p on -S -h dch -h dcm -h l2h -h l2h matmult_c.gcc mnk $i $i $i
+done
+echo "\nend matmult_mnk\n"
+
+echo "\nstart matmult_mkn\n"
+for i in "${arr[@]}"
+do
+    matmult_c.gcc mkn $i $i $i
+done
+echo "\nend matmult_mkn\n"
+
+echo "nstart matmult_nmk\n"
+for i in "${arr[@]}"
+do
+    matmult_c.gcc nmk $i $i $i
+done
+echo "\nend matmult_nmk\n"
+
+echo "\nstart matmult_nkm\n"
+for i in "${arr[@]}"
+do
+    matmult_c.gcc nkm $i $i $i
+done
+echo "\nend matmult_nkm\n"
+
+echo "\nstart matmult_kmn\n"
+for i in "${arr[@]}"
+do
+    matmult_c.gcc kmn $i $i $i
+done
+echo "\nend matmult_kmn\n"
+
+echo "nstart matmult_knm\n"
+for i in "${arr[@]}"
+do
+    matmult_c.gcc knm $i $i $i
+done
+echo "\nend matmult_knm\n"
+
+
+
+
+echo "\n end of performance test\n"
+
+

@@ -4,10 +4,9 @@ LIBOBJS = $(LIBSRCS:.c=.o)
 
 OPT     = -g
 PIC     = -fPIC
-ISA	= -std=c99
 
 CC	= gcc
-CFLAGS= $(OPT) $(PIC) $(XOPTS) $(ISA)
+CFLAGS= $(OPT) $(PIC) $(XOPTS)
 
 SOFLAGS = -shared
 XLIBS   = 

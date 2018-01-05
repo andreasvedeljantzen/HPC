@@ -1,0 +1,17 @@
+#!/bin/bash
+
+./matmult_c.gcc nat 10 10 10
+
+
+./matmult_c.gcc mnk 10 10 10
+
+./matmult_c.gcc mkn 10 10 10
+
+./matmult_c.gcc nmk 10 10 10
+
+./matmult_c.gcc nkm 10 10 10
+
+./matmult_c.gcc kmn 10 10 10
+
+./matmult_c.gcc knm 10 10 10
+
