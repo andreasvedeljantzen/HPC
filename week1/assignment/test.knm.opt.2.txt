@@ -3,17 +3,16 @@ Functions sorted by metric: Exclusive Total CPU Time
 Excl.     Incl.     Excl. L1    Excl. L1    Excl. L2    Excl. L2    Name
 Total     Total     D-cache     D-cache     Cache Hits  Cache
 CPU sec.  CPU sec.  Hits        Misses                  Misses
-4.123     4.123     3123128963  2688864109  2528811873  166166170   <Total>
-3.973     3.973     2802808033  2688864109  2528811873  166166170   matmult_knm
-0.130     0.130      320320930           0           0          0   <static>@0x58b160 (<libsatlas.so.3.10>)
-0.010     0.010              0           0           0          0   ATL_dcol2blk_a1
-0.010     0.010              0           0           0          0   munmap
-0.        0.150              0           0           0          0   ATL_dgemm
-0.        0.150              0           0           0          0   ATL_dmmJIK
-0.        0.140              0           0           0          0   ATL_dmmJIK2
-0.        4.123              0           0           0          0   __libc_start_main
-0.        0.150              0           0           0          0   cblas_dgemm
-0.        4.123              0           0           0          0   main
-0.        0.150              0           0           0          0   matmult_ref
-0.        3.973              0           0           0          0   mflops
+7.735     7.735     5855866819  5403336477  5083233601  326326330   <Total>
+7.615     7.625     5525535859  5403336477  5083233601  326326330   matmult_knm
+0.110     0.110      330330960           0           0          0   <static>@0x58b160 (<libsatlas.so.3.10>)
+0.010     0.010              0           0           0          0   __GI_memset
+0.        0.110              0           0           0          0   ATL_dgemm
+0.        0.110              0           0           0          0   ATL_dmmJIK
+0.        0.110              0           0           0          0   ATL_dmmJIK2
+0.        7.735              0           0           0          0   __libc_start_main
+0.        0.110              0           0           0          0   cblas_dgemm
+0.        7.735              0           0           0          0   main
+0.        0.110              0           0           0          0   matmult_ref
+0.        7.625              0           0           0          0   mflops
 

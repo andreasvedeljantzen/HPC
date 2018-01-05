@@ -3,23 +3,20 @@ Functions sorted by metric: Exclusive Total CPU Time
 Excl.     Incl.     Excl. L1     Excl. L1    Excl. L2  Excl. L2     Name
 Total     Total     D-cache      D-cache     Cache     Cache
 CPU sec.  CPU sec.  Hits         Misses      Hits      Misses
-36.726    36.726    88488654158  3607528131  22407008  3583649669   <Total>
-35.945    35.945    86126287375  3594724121   9603004  3583649669   matmult_mnk
- 0.741     0.741     2362366783    12804010  12804004           0   <static>@0x58b160 (<libsatlas.so.3.10>)
- 0.020     0.020              0           0         0           0   <static>@0x62e61d (<libsatlas.so.3.10>)
- 0.010     0.010              0           0         0           0   munmap
- 0.010     0.010              0           0         0           0   sigprocmask
- 0.        0.010              0           0         0           0   <static>@0x2b77f (<libcollector.so>)
- 0.        0.761              0           0         0           0   ATL_dgemm
- 0.        0.761              0           0         0           0   ATL_dmmJIK
+37.876    37.876    88488654160  3610729132  25608009  3583649741   <Total>
+37.106    37.106    86126287376  3597925125  12804004  3583649741   matmult_mnk
+ 0.731     0.731     2362366784    12804007  12804005           0   <static>@0x58b160 (<libsatlas.so.3.10>)
+ 0.010     0.010              0           0         0           0   <static>@0x62e61d (<libsatlas.so.3.10>)
+ 0.010     0.010              0           0         0           0   ATL_dputblk_b1
+ 0.010     0.010              0           0         0           0   compare_mat
+ 0.010     0.010              0           0         0           0   init_matrix
+ 0.        0.751              0           0         0           0   ATL_dgemm
+ 0.        0.751              0           0         0           0   ATL_dmmJIK
  0.        0.741              0           0         0           0   ATL_dmmJIK2
- 0.        0.020              0           0         0           0   ATL_drow2blkT2_a1
- 0.        0.010              0           0         0           0   __collector_reallocVSize
- 0.       36.726              0           0         0           0   __libc_start_main
- 0.        0.761              0           0         0           0   cblas_dgemm
- 0.        0.010              0           0         0           0   dlclose
- 0.       36.726              0           0         0           0   main
- 0.        0.761              0           0         0           0   matmult_ref
- 0.        0.010              0           0         0           0   matrixfree
- 0.       35.955              0           0         0           0   mflops
+ 0.        0.010              0           0         0           0   ATL_drow2blkT2_a1
+ 0.       37.876              0           0         0           0   __libc_start_main
+ 0.        0.751              0           0         0           0   cblas_dgemm
+ 0.       37.876              0           0         0           0   main
+ 0.        0.751              0           0         0           0   matmult_ref
+ 0.       37.106              0           0         0           0   mflops
 

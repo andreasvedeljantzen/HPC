@@ -3,23 +3,20 @@ Functions sorted by metric: Exclusive Total CPU Time
 Excl.     Incl.     Excl. L1     Excl. L1    Excl. L2    Excl. L2   Name
 Total     Total     D-cache      D-cache     Cache Hits  Cache
 CPU sec.  CPU sec.  Hits         Misses                  Misses
-4.563     4.563     12632656270  1229184389  1145958361  80080083   <Total>
-4.403     4.403     12292315310  1229184389  1145958361  80080083   matmult_knm
-0.120     0.120       340340960           0           0         0   <static>@0x58b160 (<libsatlas.so.3.10>)
-0.010     0.010               0           0           0         0   <static>@0x5c541b (<libsatlas.so.3.10>)
-0.010     0.010               0           0           0         0   <static>@0x5d8cc1 (<libsatlas.so.3.10>)
-0.010     0.010               0           0           0         0   ATL_dputblk_b0
-0.010     0.010               0           0           0         0   compare_mat
-0.        0.010               0           0           0         0   ATL_dMBJBmm
-0.        0.150               0           0           0         0   ATL_dgemm
-0.        0.150               0           0           0         0   ATL_dmmJIK
-0.        0.150               0           0           0         0   ATL_dmmJIK2
-0.        0.010               0           0           0         0   ATL_dpKBmm
-0.        0.010               0           0           0         0   ATL_dpKBmm_b1
-0.        0.010               0           0           0         0   ATL_dpNBmm_b1
-0.        4.563               0           0           0         0   __libc_start_main
-0.        0.150               0           0           0         0   cblas_dgemm
-0.        4.563               0           0           0         0   main
-0.        0.150               0           0           0         0   matmult_ref
-0.        4.403               0           0           0         0   mflops
+4.633     4.633     12652676306  1225983389  1145958361  81081084   <Total>
+4.483     4.483     12332355383  1225983389  1145958361  81081084   matmult_knm
+0.110     0.110       320320923           0           0         0   <static>@0x58b160 (<libsatlas.so.3.10>)
+0.030     0.030               0           0           0         0   <static>@0x5d8cc1 (<libsatlas.so.3.10>)
+0.010     0.010               0           0           0         0   munmap
+0.        0.140               0           0           0         0   ATL_dgemm
+0.        0.140               0           0           0         0   ATL_dmmJIK
+0.        0.140               0           0           0         0   ATL_dmmJIK2
+0.        0.030               0           0           0         0   ATL_dpKBmm
+0.        0.030               0           0           0         0   ATL_dpKBmm_b1
+0.        4.633               0           0           0         0   __libc_start_main
+0.        0.140               0           0           0         0   cblas_dgemm
+0.        4.633               0           0           0         0   main
+0.        0.140               0           0           0         0   matmult_ref
+0.        0.010               0           0           0         0   matrixfree
+0.        4.483               0           0           0         0   mflops
 
