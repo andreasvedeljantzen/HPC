@@ -1,0 +1,25 @@
+Functions sorted by metric: Exclusive Total CPU Time
+
+Excl.     Incl.     Excl. L1    Excl. L1    Excl. L2  Excl. L2     Name
+Total     Total     D-cache     D-cache     Cache     Cache
+CPU sec.  CPU sec.  Hits        Misses      Hits      Misses
+11.368    11.368    9969988621  3674770288  19206007  3655756939   <Total>
+10.517    10.527    7607621830  3661966276   6401997  3655756939   matmult_mnk
+ 0.761     0.761    2362366791    12804012  12804010           0   <static>@0x58b160 (<libsatlas.so.3.10>)
+ 0.030     0.030             0           0         0           0   ATL_dputblk_b0
+ 0.010     0.010             0           0         0           0   <static>@0x62e61d (<libsatlas.so.3.10>)
+ 0.010     0.010             0           0         0           0   ATL_dcol2blk_a1
+ 0.010     0.010             0           0         0           0   ATL_dputblk_b1
+ 0.010     0.010             0           0         0           0   __GI_memset
+ 0.010     0.010             0           0         0           0   compare_mat
+ 0.010     0.010             0           0         0           0   init_matrix
+ 0.        0.821             0           0         0           0   ATL_dgemm
+ 0.        0.821             0           0         0           0   ATL_dmmJIK
+ 0.        0.811             0           0         0           0   ATL_dmmJIK2
+ 0.        0.010             0           0         0           0   ATL_drow2blkT2_a1
+ 0.       11.368             0           0         0           0   __libc_start_main
+ 0.        0.821             0           0         0           0   cblas_dgemm
+ 0.       11.368             0           0         0           0   main
+ 0.        0.821             0           0         0           0   matmult_ref
+ 0.       10.527             0           0         0           0   mflops
+

@@ -1,0 +1,84 @@
+#!/bin/bash
+
+module load studio
+
+arr=(50 850 1600)
+
+echo "\nnow ready for performance test\n"
+
+echo "\nstart matmult_mnk\n"
+for i in "${arr[@]}"
+do
+    matmult_c.gcc mnk $i $i $i
+    collect -o test.mnk.opt.1.er -p on -S on -h dch -h dcm -h l2h -h l2m matmult_c.gcc mnk $i $i $i
+done
+echo "\nend matmult_mnk\n"
+
+echo "\nstart matmult_mkn\n"
+for i in "${arr[@]}"
+do
+    matmult_c.gcc mkn $i $i $i
+    collect -o test.mkn.opt.1.er -p on -S on -h dch -h dcm -h l2h -h l2m matmult_c.gcc mkn $i $i $i
+done
+echo "\nend matmult_mkn\n"
+
+echo "nstart matmult_nmk\n"
+for i in "${arr[@]}"
+do
+    matmult_c.gcc nmk $i $i $i
+    collect -o test.nmk.opt.1.er -p on -S on -h dch -h dcm -h l2h -h l2m matmult_c.gcc nmk $i $i $i
+done
+echo "\nend matmult_nmk\n"
+
+echo "\nstart matmult_nkm\n"
+for i in "${arr[@]}"
+do
+    matmult_c.gcc nkm $i $i $i
+    collect -o test.nkm.opt.1.er -p on -S on -h dch -h dcm -h l2h -h l2m matmult_c.gcc nkm $i $i $i
+done
+echo "\nend matmult_nkm\n"
+
+echo "\nstart matmult_kmn\n"
+for i in "${arr[@]}"
+do
+    matmult_c.gcc kmn $i $i $i
+    collect -o test.kmn.opt.1.er -p on -S on -h dch -h dcm -h l2h -h l2m matmult_c.gcc kmn $i $i $i
+done
+echo "\nend matmult_kmn\n"
+
+echo "nstart matmult_knm\n"
+for i in "${arr[@]}"
+do
+    matmult_c.gcc knm $i $i $i
+    collect -o test.knm.opt.1.er -p on -S on -h dch -h dcm -h l2h -h l2m matmult_c.gcc knm $i $i $i
+done
+echo "\nend matmult_knm\n"
+
+er_print -func test.mnk.opt.1.er > test.mnk.opt.1.txt
+er_print -func test.mnk.opt.2.er > test.mnk.opt.2.txt
+er_print -func test.mnk.opt.3.er > test.mnk.opt.3.txt
+
+er_print -func test.mkn.opt.1.er > test.mkn.opt.1.txt
+er_print -func test.mkn.opt.2.er > test.mkn.opt.2.txt
+er_print -func test.mkn.opt.3.er > test.mkn.opt.3.txt
+
+er_print -func test.nmk.opt.1.er > test.nmk.opt.1.txt
+er_print -func test.nmk.opt.2.er > test.nmk.opt.2.txt
+er_print -func test.nmk.opt.3.er > test.nmk.opt.3.txt
+
+er_print -func test.nkm.opt.1.er > test.nkm.opt.1.txt
+er_print -func test.nkm.opt.2.er > test.nkm.opt.2.txt
+er_print -func test.nkm.opt.3.er > test.nkm.opt.3.txt
+
+er_print -func test.kmn.opt.1.er > test.kmn.opt.1.txt
+er_print -func test.kmn.opt.2.er > test.kmn.opt.2.txt
+er_print -func test.kmn.opt.3.er > test.kmn.opt.3.txt
+
+er_print -func test.knm.opt.1.er > test.knm.opt.1.txt
+er_print -func test.knm.opt.2.er > test.knm.opt.2.txt
+er_print -func test.knm.opt.3.er > test.knm.opt.3.txt
+
+
+echo "\n end of performance test\n"
+
+
