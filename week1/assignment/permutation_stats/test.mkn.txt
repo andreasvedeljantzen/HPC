@@ -1,0 +1,8 @@
+Functions sorted by metric: Exclusive Total CPU Time
+
+Excl.     Incl.     Excl. L1     Excl. L1  Excl. L2  Excl. L2   Name
+Total     Total     D-cache      D-cache   Cache     Cache
+CPU sec.  CPU sec.  Hits         Misses    Hits      Misses
+2.992     2.992     12842872863  3201004   3201003   0          matmult_mkn
+3.092     3.092     13533565130  3201004   3201001   0          matmult_mkn
+20.284    20.284    90090300381  22407007  22407005  1001002    matmult_mkn
