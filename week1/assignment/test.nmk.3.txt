@@ -1,11 +1,21 @@
 Functions sorted by metric: Exclusive Total CPU Time
 
-Excl.     Incl.     Excl. L1     Excl. L1  Excl. L2  Excl. L2   Name
-Total     Total     D-cache      D-cache   Cache     Cache
-CPU sec.  CPU sec.  Hits         Misses    Hits      Misses
-2.992     2.992     12182209543  9603006   9603004   0          <Total>
-2.992     2.992     12182209543  9603006   9603004   0          matmult_nmk
-0.        2.992               0        0         0   0          __libc_start_main
-0.        2.992               0        0         0   0          main
-0.        2.992               0        0         0   0          mflops
+Excl.     Incl.     Excl. L1     Excl. L1    Excl. L2  Excl. L2     Name
+Total     Total     D-cache      D-cache     Cache     Cache
+CPU sec.  CPU sec.  Hits         Misses      Hits      Misses
+36.476    36.476    88488654148  3604327130  16005005  3588654823   <Total>
+35.705    35.705    86126287352  3591523120   3200997  3588654823   matmult_nmk
+ 0.741     0.741     2362366796    12804010  12804008           0   <static>@0x58b160 (<libsatlas.so.3.10>)
+ 0.010     0.010              0           0         0           0   <static>@0x62e61d (<libsatlas.so.3.10>)
+ 0.010     0.010              0           0         0           0   ATL_dputblk_b0
+ 0.010     0.010              0           0         0           0   compare_mat
+ 0.        0.761              0           0         0           0   ATL_dgemm
+ 0.        0.761              0           0         0           0   ATL_dmmJIK
+ 0.        0.751              0           0         0           0   ATL_dmmJIK2
+ 0.        0.010              0           0         0           0   ATL_drow2blkT2_a1
+ 0.       36.476              0           0         0           0   __libc_start_main
+ 0.        0.761              0           0         0           0   cblas_dgemm
+ 0.       36.476              0           0         0           0   main
+ 0.        0.761              0           0         0           0   matmult_ref
+ 0.       35.705              0           0         0           0   mflops
 

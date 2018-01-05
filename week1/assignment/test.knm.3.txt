@@ -3,18 +3,24 @@ Functions sorted by metric: Exclusive Total CPU Time
 Excl.     Incl.     Excl. L1     Excl. L1    Excl. L2  Excl. L2     Name
 Total     Total     D-cache      D-cache     Cache     Cache
 CPU sec.  CPU sec.  Hits         Misses      Hits      Misses
-37.406    37.406    84344502236  8184959561  22407007  8160386311   <Total>
-36.556    36.556    82002155520  8172155554   9603003  8160386311   matmult_knm
- 0.821     0.821     2342346716    12804007  12804004           0   <static>@0x58b160 (<libsatlas.so.3.10>)
- 0.010     0.010              0           0         0           0   ATL_dcol2blk_a1
- 0.010     0.010              0           0         0           0   ATL_dputblk_b1
+36.936    36.936    84364522294  8188160563  22407007  8160386311   <Total>
+36.085    36.085    81962115422  8175356554   9603000  8160386311   matmult_knm
+ 0.811     0.811     2362366780    12804009  12804007           0   <static>@0x58b160 (<libsatlas.so.3.10>)
+ 0.010     0.010              0           0         0           0   <static>@0x62e61d (<libsatlas.so.3.10>)
+ 0.010     0.010              0           0         0           0   __collector_xml_vsnprintf
+ 0.010     0.010              0           0         0           0   __read_nocancel
  0.010     0.010              0           0         0           0   init_matrix
- 0.        0.841              0           0         0           0   ATL_dgemm
- 0.        0.841              0           0         0           0   ATL_dmmJIK
- 0.        0.841              0           0         0           0   ATL_dmmJIK2
- 0.       37.406              0           0         0           0   __libc_start_main
- 0.        0.841              0           0         0           0   cblas_dgemm
- 0.       37.406              0           0         0           0   main
- 0.        0.841              0           0         0           0   matmult_ref
- 0.       36.556              0           0         0           0   mflops
+ 0.        0.020              0           0         0           0   <static>@0x2b77f (<libcollector.so>)
+ 0.        0.821              0           0         0           0   ATL_dgemm
+ 0.        0.821              0           0         0           0   ATL_dmmJIK
+ 0.        0.811              0           0         0           0   ATL_dmmJIK2
+ 0.        0.010              0           0         0           0   ATL_drow2blkT2_a1
+ 0.       36.936              0           0         0           0   __libc_start_main
+ 0.        0.821              0           0         0           0   cblas_dgemm
+ 0.        0.          40040092           0         0           0   compare_mat
+ 0.        0.010              0           0         0           0   dlclose
+ 0.        0.010              0           0         0           0   dlopen
+ 0.       36.936              0           0         0           0   main
+ 0.        0.821              0           0         0           0   matmult_ref
+ 0.       36.105              0           0         0           0   mflops
 

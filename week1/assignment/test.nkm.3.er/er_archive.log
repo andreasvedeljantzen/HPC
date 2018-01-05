@@ -1,4 +1,4 @@
-### Start Fri Jan  5 10:26:04 2018
+### Start Fri Jan  5 11:20:11 2018
 # /opt/oracle/developerstudio12.5/bin/../bin/er_archive -n -O /zhome/43/c/115859/Documents/HPC/week1/assignment/test.nkm.3.er/er_archive.log /zhome/43/c/115859/Documents/HPC/week1/assignment/test.nkm.3.er
 Copying `/zhome/43/c/115859/Documents/HPC/week1/assignment/matmult_c.gcc'
   to `/zhome/43/c/115859/Documents/HPC/week1/assignment/test.nkm.3.er/archives/matmult_c.gcc_gVIRWXR2Wk5'
