@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-#include <mat.h>
+#include <math.h>
 
 int
 main(int argc, char *argv[]) {

@@ -1,6 +1,6 @@
 SRCS	= main.c func.c
 OBJS	= $(SRCS:.c=.o)
-TARGET	= madd.$(CC)
+TARGET	= pi_cal.$(CC)
 
 CC	= gcc
 INCS	= 
