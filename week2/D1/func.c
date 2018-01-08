@@ -1,5 +1,5 @@
 /*------PI----*/
-void pi_cal(int I) {
+double pi_cal(int I) {
 	double PI[I];
 	double RealPI;
 	for (int i = 1; i <= I; i++) { 
