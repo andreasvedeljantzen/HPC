@@ -7,7 +7,7 @@ int
 main(int argc, char *argv[]) {
 
     int    I;
-    I = 100;
+    I = 1000000;
 	    
 	printf("Pi = %g\n", pi_cal(I));
 
