@@ -1,5 +1,5 @@
 /*------PI----*/
-/*
+
 double pi_cal(int I) {
 	double PI[I] ;
 	double RealPI = 0.0;
@@ -10,8 +10,9 @@ double pi_cal(int I) {
 		RealPI += PI[i];
     }
     return(RealPI/I);
-}*/
+}
 
+/*
 double pi_cal(int N) {
 double arr[N];
 
@@ -26,3 +27,4 @@ double arr[N];
 
 	return(PI/N);
 }
+*/

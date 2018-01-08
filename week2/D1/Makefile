@@ -14,7 +14,7 @@ LIBS	=
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LIBS) -xopenmp
+	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LIBS) #-xopenmp
 
 clean:
 	@/bin/rm -f $(OBJS) *~ core*

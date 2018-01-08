@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <math.h>
+#include "func.h"
 
 int
 main(int argc, char *argv[]) {
