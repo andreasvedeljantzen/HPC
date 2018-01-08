@@ -5,7 +5,7 @@ TARGET	= pi_cal.$(CC)
 CC	= suncc
 INCS	= 
 DBG	= -g
-OPT	= -O3
+OPT	=
 PARA	= 
 CFLAGS	= -std=c99 $(DBG) $(OPT) $(PARA) $(XOPTS)
 
