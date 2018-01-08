@@ -7,7 +7,7 @@ INCS	=
 DBG	= -g
 OPT	= -O3
 PARA	= 
-CFLAGS	= $(DBG) $(OPT) $(PARA) $(XOPTS)
+CFLAGS	= -std=c99 $(DBG) $(OPT) $(PARA) $(XOPTS)
 
 LIBS	= 
 
