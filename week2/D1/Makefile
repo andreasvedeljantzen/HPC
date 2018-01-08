@@ -1,18 +1,24 @@
-TARGET  = libmatmult.so
-LIBSRCS = func.c
-LIBOBJS = $(LIBSRCS:.c=.o)
-
-OPT     = -g -Ofast
-PIC     = -fPIC
+SRCS	= main.c func.c
+OBJS	= $(SRCS:.c=.o)
+TARGET	= madd.$(CC)
 
 CC	= gcc
-CFLAGS= $(OPT) $(PIC) $(XOPTS)
+INCS	= 
+DBG	= -g
+OPT	= -O3
+PARA	= 
+CFLAGS	= $(DBG) $(OPT) $(PARA) $(XOPTS)
 
-SOFLAGS = -shared
-XLIBS   = 
+LIBS	= 
 
-$(TARGET): $(LIBOBJS)
-	$(CC) -o $@ $(SOFLAGS) $(LIBOBJS) $(XLIBS)
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LIBS)
 
 clean:
-	@/bin/rm -f core core.* $(LIBOBJS)
+	@/bin/rm -f $(OBJS) *~ core*
+
+realclean: clean
+	@/bin/rm -f $(TARGET)
+
