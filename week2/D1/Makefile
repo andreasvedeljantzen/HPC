@@ -2,7 +2,7 @@ SRCS	= main.c func.c
 OBJS	= $(SRCS:.c=.o)
 TARGET	= pi_cal.$(CC)
 
-CC	= gcc
+CC	= suncc
 INCS	= 
 DBG	= -g
 OPT	= -O3
@@ -14,7 +14,7 @@ LIBS	=
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LIBS)
+	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LIBS) -xopenmp
 
 clean:
 	@/bin/rm -f $(OBJS) *~ core*
