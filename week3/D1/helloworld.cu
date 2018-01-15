@@ -1,23 +1,18 @@
+#include <stdio.h>
+#include <helper_cuda.h>
+__global__ void kernel();
+
+
 int main(int argc, char **argv)
 {
-	// Variable tid is in local memory and private to each thread
- 	int tid;
-
-	// Transfer data from host to device
-	cudaMemcpy(...);
-
 	// Kernel lauch
 	kernel<<<4, 64>>>();
-	__global__ void kernel() {
+
+	return(0);
+
+};
+
+__global__ void kernel() {
 		int i = blockIdx.x * blockDim.x + threadIdx.x;
-		printf("Hello world! Im thread %ithreadIdx.x out of %iblockIdx.x . My Global thread id is %ithreadIdx out of %iGridDim.x");
+		printf("Hello world! Im thread %i out of %i . My Global thread id is %i out of %i \n", threadIdx.x, blockIdx.x, threadIdx.x, GridDim.x );
 	};
-
-	cudaDeviceSynchronize();
-
-	// Transfer results from device to host
-	cudaMemcpy(...);
-
- 	// Built-in variables like threadIdx.x are in local memory
-
-} 
