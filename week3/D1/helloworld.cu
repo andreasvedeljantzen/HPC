@@ -15,6 +15,8 @@ int main(int argc, char **argv)
 	// Kernel lauch
 	kernel<<<4, 64>>>();
 
+	cudaDeviceSynchronize()
+
 	return(0);
 
 };
