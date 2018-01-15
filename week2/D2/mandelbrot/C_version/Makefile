@@ -15,7 +15,7 @@ CCC	= CC
 CXX	= CC
 CXXFLAGS= -I $(PNGWRTIPATH)
 
-CFLAGS	= $(OPT) $(ISA) $(PARA) $(XOPT)
+CFLAGS	= $(OPT) $(ISA) $(PARA) $(XOPT) $(OPENMP)
 
 F90C  	= f90
 
