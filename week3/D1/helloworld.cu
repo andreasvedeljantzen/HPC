@@ -3,11 +3,6 @@
 
 
 __global__ void kernel() {
-		int i;
-		if(i = 100){
-			int *a = (int*) 0x10000; 
-			*a = 0;
-		}
 		i = blockIdx.x * blockDim.x + threadIdx.x;
 		printf("Hello world! Im thread %i out of %i . My Global thread id is %i out of %i \n", threadIdx.x, blockIdx.x, i, gridDim.x*blockDim.x );
 	};
