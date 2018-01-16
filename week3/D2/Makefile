@@ -50,6 +50,7 @@ realclean: clean
 
 # dependencies
 #
-main.o  : main.cu mandel.h
+main.o  : main.cu mandelgpu.h
 mandel.o: mandel.cu
+mandelgpu.o: mandelgpu.cu
 writepng.o: writepng.h writepng.cc
