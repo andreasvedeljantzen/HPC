@@ -51,5 +51,5 @@ realclean: clean
 # dependencies
 #
 main.o  : main.cu mandel.h
-mandel.o: mandel.cu
+mandel.o: mandel.cu mandel.h
 writepng.o: writepng.h writepng.cc
