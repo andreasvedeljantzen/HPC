@@ -1,4 +1,3 @@
-<<<<<<< HEAD:week3/D2/Makefile
 TARGET	= mandelbrot
 OBJS	= main.o mandel.o writepng.o
 
@@ -51,64 +50,7 @@ realclean: clean
 
 # dependencies
 #
-main.o  : main.cu mandelgpu.h
-mandel.o: mandel.cu
-mandelgpu.o: mandelgpu.cu
-writepng.o: writepng.h writepng.cc
-=======
-TARGET	= mandelbrot
-OBJS	= main.o mandel.o writepng.o
-
-OPT	= -g -O3
-ISA	= 
-PARA	= -fopen
-
-XOPTS = -Xptxas=-v -arch=sm_70 
-
-PNGWRITERPATH = pngwriter
-ARCH	      = $(shell uname -p)
-PNGWRTLPATH   = $(PNGWRITERPATH)/lib/$(ARCH)
-PNGWRTIPATH   = $(PNGWRITERPATH)/include
-PNGWRITERLIB  = $(PNGWRTLPATH)/libpngwriter.a
-
-CC	= gcc
-
-CCC	= nvcc
-CXX	= nvcc
-CXXFLAGS= --compiler-options "$(OPT) $(PARA)" $(XOPTS) -I $(PNGWRTIPATH)
-
-CFLAGS	= $(OPT) $(ISA) $(PARA) $(XOPT)
-
-F90C  	= gfortran
-LIBS	= -L $(PNGWRTLPATH) -lpngwriter -lpng 
-
-CUDA_PATH ?= /appl/cuda/9.1
-INCLUDES = -I$(CUDA_PATH)/include -I$(CUDA_PATH)/samples/common/inc
-
-all: $(PNGWRITERLIB) $(TARGET)
-
-$(TARGET): $(OBJS) 
-	$(CXX) $(CXXFLAGS) -o $@ $(OBJS) $(LIBS)
-
-$(PNGWRITERLIB):
-	@cd pngwriter/src && $(MAKE) -f Makefile.gnu
-
-.SUFFIXES: .cu
-.cu.o:
-	$(CXX) -o $*.o -c $*.cu $(CXXFLAGS) $(SOFLAGS) $(INCLUDES)
-
-clean:
-	@/bin/rm -f *.o core
-
-realclean: clean
-	@cd pngwriter/src && $(MAKE) -f Makefile.gnu clean
-	@rm -f $(PNGWRITERLIB)
-	@rm -f $(TARGET)
-	@rm -f mandelbrot.png
-
-# dependencies
-#
 main.o  : main.cu mandel.h
-mandel.o: mandel.cu mandel.h
+mandel.o: mandel.cu
+mandelgpu.o: mandel.cu
 writepng.o: writepng.h writepng.cc
->>>>>>> 29376a534bb6847586168878d9a92680b652d0a6:week3/D2/Makefile

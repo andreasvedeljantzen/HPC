@@ -42,10 +42,8 @@ int main(int argc, char *argv[]) {
 
     mandel<<<Grid_size,Block_size>>>(width, height, d_image, max_iter, block);
 
-    double time_compute = omp_get_wtime()-time;
-
     cudaDeviceSynchronize();
-    double time_transfer = omp_get_wtime()-time;
+    double elapsed = omp_get_wtime()-time;
 
     cudaMemcpy(h_image,d_image, size_p, cudaMemcpyDeviceToHost);
 
@@ -54,8 +52,7 @@ int main(int argc, char *argv[]) {
     cudaFreeHost(h_image);
     cudaFree(d_image);
 
-    printf("The runtime is %g \n",time_compute);
-    printf("The runtime is %g \n",time_transfer);
+    printf("The runtime is %g \n",elapsed);
 
     return(0);
 }
