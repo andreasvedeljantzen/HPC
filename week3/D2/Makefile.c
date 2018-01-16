@@ -1,5 +1,5 @@
 TARGET	= mandelbrot
-OBJS	= main.o mandel.o mandelgpu.o writepng.o
+OBJS	= main.o mandel.o writepng.o
 
 OPT	= -g -O3
 ISA	= 
