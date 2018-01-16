@@ -43,7 +43,7 @@ clean:
 	@/bin/rm -f *.o core
 
 realclean: clean
-	@cd pngwriter/src && $(MAKE) -f Makefile.gnu clean
+	@cd pngwriter/src && $(MAKE) -f $(MAKEFILE_LIST) clean
 	@rm -f $(PNGWRITERLIB)
 	@rm -f $(TARGET)
 	@rm -f mandelbrot.png
