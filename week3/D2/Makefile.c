@@ -1,9 +1,9 @@
 TARGET	= mandelbrot
-OBJS	= main.o mandel.o writepng.o
+OBJS	= main.o mandelgpu.o writepng.o
 
 OPT	= -g -O3
 ISA	= 
-PARA	= -fopenmp
+PARA	= -fopen
 
 XOPTS = -Xptxas=-v -arch=sm_70 
 
@@ -43,13 +43,13 @@ clean:
 	@/bin/rm -f *.o core
 
 realclean: clean
-	@cd pngwriter/src && $(MAKE) -f $(MAKEFILE_LIST) clean
+	@cd pngwriter/src && $(MAKE) -f Makefile.gnu clean
 	@rm -f $(PNGWRITERLIB)
 	@rm -f $(TARGET)
 	@rm -f mandelbrot.png
 
 # dependencies
 #
-main.o  : main.cu mandel.h
-mandel.o: mandel.cu
+main.o  : main.cu mandelgpu.h
+mandel.o: mandelgpu.cu
 writepng.o: writepng.h writepng.cc
