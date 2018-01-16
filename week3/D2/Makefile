@@ -1,5 +1,5 @@
 TARGET	= mandelbrot
-OBJS	= main.o mandelgpu.o writepng.o
+OBJS	= main.o mandel.o writepng.o
 
 OPT	= -g -O3
 ISA	= 
@@ -50,6 +50,6 @@ realclean: clean
 
 # dependencies
 #
-main.o  : main.cu mandelgpu.h
-mandel.o: mandelgpu.cu
+main.o  : main.cu mandel.h
+mandel.o: mandel.cu
 writepng.o: writepng.h writepng.cc
