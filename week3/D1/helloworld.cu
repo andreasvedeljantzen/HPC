@@ -15,7 +15,7 @@ int main(int argc, char **argv)
 
 	// Kernel lauch
 
-	kernel<<<4, 64>>>();
+	kernel<<<1, 256>>>();
 
 	cudaDeviceSynchronize();
 
