@@ -17,8 +17,17 @@ filename='project3pos'
 module load cuda/9.1
 module load gcc/6.3.0
 
-./program_jac_mp_v3 1000 1000 1000 10
+matsize=1000
+max_iter = 1000
+
+./program_jac_mp_v3 $matsize $matsize $matsize max_iter
 
 ## data dirs
 #mkdir -rp analysis/poisson
 #rm -rf analysis/poisson/*
+
+#echo "\n ... \n"
+
+#er_print -func test.blk.opt.1.er > test.blk.opt.1.txt
+
+#echo "\n ... \n"

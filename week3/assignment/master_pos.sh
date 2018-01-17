@@ -14,6 +14,7 @@ filename='project3pos'
 #BSUB -n 12
 
 ##  load modules
+voltash
 module load cuda/9.1
 module load gcc/6.3.0
 

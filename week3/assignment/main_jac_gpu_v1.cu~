@@ -27,7 +27,7 @@ int main(int argc, char *argv[]) {
     cudaSetDevice(device);
 
     // timing
-    double ts, te, mflops, memory,flop;
+    //double ts, te, mflops, memory,flop;
     int max_iter, loops, N;
         
     // command line argument sets the dimensions of the image
@@ -40,8 +40,6 @@ int main(int argc, char *argv[]) {
         N = 32 + 2;
         max_iter = 100;
     }
-
-    loops = 1;
 
     // arrays
     double   *d_f, *d_u, *d_u_old;
@@ -68,6 +66,8 @@ int main(int argc, char *argv[]) {
        fprintf(stderr, "memory allocation failed!\n");
        return(1);
     }
+    double time, time_end, time_IO_1, time_IO_2, time_compute, time_compute_end,tot_time_compute;	
+    time = omp_get_wtime();
 
     double delta = 2.0/N;
 
@@ -93,43 +93,49 @@ int main(int argc, char *argv[]) {
     cudaMemcpy(d_f, h_f, size_f, cudaMemcpyHostToDevice);
     cudaMemcpy(d_u, h_u, size_u, cudaMemcpyHostToDevice);
     cudaMemcpy(d_u_old, h_u_old, size_u_old, cudaMemcpyHostToDevice);
+    time_IO_1 = omp_get_wtime()- time;
     
     // do program
-    ts = omp_get_wtime();
+    //ts = omp_get_wtime();
     int k;
     k=0;
-    double *temp;
+    //double *temp;
+    time_compute = omp_get_wtime();
     while (k < max_iter) {
 	//Set u_old = u
-	temp = h_u;
-	h_u = h_u_old;
-	h_u_old = temp;
+	//temp = h_u;
+	//h_u = h_u_old;
+	//h_u_old = temp;
 	cudaMemcpy(d_u, h_u, size_u, cudaMemcpyHostToDevice);
         cudaMemcpy(d_u_old, h_u_old, size_u_old, cudaMemcpyHostToDevice);
         jac_mp_v3<<<1,1>>>(N, delta, max_iter,d_f,d_u,d_u_old);
-	cudaMemcpy(h_u_old, d_u_old, size_u_old, cudaMemcpyDeviceToHost);
-	cudaMemcpy(h_u, d_u, size_u, cudaMemcpyDeviceToHost);
+	cudaMemcpy(h_u_old, d_u, size_u_old, cudaMemcpyDeviceToHost);
+	cudaMemcpy(h_u, d_u_old, size_u, cudaMemcpyDeviceToHost);
 	k++;
 	}
 
     cudaDeviceSynchronize();
-    te = omp_get_wtime() - ts;
+    time_compute_end = omp_get_wtime();
     // end program
 
     // Copy result back to host
     cudaMemcpy(h_u_old, d_u_old, size_u_old, cudaMemcpyDeviceToHost);
     cudaMemcpy(h_u, d_u, size_u, cudaMemcpyDeviceToHost);
-    //time_end = omp_get_wtime();
-    
+
+    //timing
+    time_end = omp_get_wtime();
+    time_IO_2 = time_end - time_compute_end;
+    tot_time_compute = time_compute_end - time_compute;
+
+	//print to see wheter it is right   
     for (int i = 0; i < N; i++) {
 	for (int j = 0; j < N; j++) {
 	    printf("%g\t", h_u[i*N+j]);
+			}
+	printf("\n");
+	}
 
-}
-printf("\n");
-}
-
-    // flops
+    //flops
     //flop=max_iter * (double)(N-2) * (double)(N-2) * 10.0;
 
     // calculate mflops in O
@@ -140,6 +146,23 @@ printf("\n");
     //printf("%g\t", memory);
     //printf("%g\t", mflops);
     //printf("%g\n", te / loops);
+
+    // stats
+    double GB = 1.0e-09;
+    double gflops  = (N * N * 2 / tot_time_compute) * GB;
+    double memory  = size_f + size_u + size_u_old;
+    double memoryGBs  = memory * GB * (1 / tot_time_compute);
+
+    printf("%g\t", memory); // footprint
+    printf("%g\t", gflops); // Gflops
+    printf("%g\t", gflops / 70.65); // pct. Gflops
+
+    printf("%g\t", memoryGBs); // bandwidth GB/s
+    printf("%g\t", memoryGBs / 8.98); // pct. bandwidth GB/s
+
+    printf("%g\t", time_end - time); // total time
+    printf("%g\t", time_IO_1 + time_IO_2); // I/O time
+    printf("%g\n", tot_time_compute); // compute time
 
     // Cleanup
     cudaFreeHost(h_f);
