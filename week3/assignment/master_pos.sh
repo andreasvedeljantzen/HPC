@@ -14,6 +14,7 @@ filename='project3pos'
 #BSUB -n 12
 
 ##  load modules
+lsf10sh
 voltash
 module load cuda/9.1
 module load gcc/6.3.0
@@ -23,9 +24,12 @@ max_iter = 1000
 
 ./program_jac_mp_v3 $matsize $matsize $matsize max_iter
 
+make
+./main_jac_gpu_v1 $matsize $matsize $matsize
+
 ## data dirs
-#mkdir -rp analysis/poisson
-#rm -rf analysis/poisson/*
+#mkdir -p analysis/pos
+#rm -rf analysis/pos/*
 
 #echo "\n ... \n"
 

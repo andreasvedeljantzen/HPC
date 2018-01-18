@@ -15,7 +15,7 @@ CUDA_PATH ?= /appl/cuda/9.1
 INCLUDES = -I$(CUDA_PATH)/include -I$(CUDA_PATH)/samples/common/inc
 
 SOFLAGS =
-XLIBS	= 
+XLIBS	= -L$(CUDA_PATH)/lib -lcublas 
 
 $(TARGET): $(OBJS)
 	$(CXX) -o $@ $(CXXFLAGS) $(SOFLAGS) $(INCLUDES) $^ $(XLIBS) 

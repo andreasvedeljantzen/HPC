@@ -1,6 +1,6 @@
-TARGET = helloworld
-SRCS	 = helloworld.cu
-OBJS	 = helloworld.o
+TARGET = main_jac_gpu_v1
+SRCS	 = main_jac_gpu_v1.cu
+OBJS	 = main_jac_gpu_v1.o
 
 OPT	= -g
 PIC	=
@@ -15,7 +15,7 @@ CUDA_PATH ?= /appl/cuda/9.1
 INCLUDES = -I$(CUDA_PATH)/include -I$(CUDA_PATH)/samples/common/inc
 
 SOFLAGS =
-XLIBS	= 
+XLIBS	= -L$(CUDA_PATH)/lib -lcublas 
 
 $(TARGET): $(OBJS)
 	$(CXX) -o $@ $(CXXFLAGS) $(SOFLAGS) $(INCLUDES) $^ $(XLIBS) 
