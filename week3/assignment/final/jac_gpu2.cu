@@ -3,7 +3,6 @@ extern "C" {
 #include <stdlib.h>
 #include <omp.h>
 
-
 void write_result(double *U, int N, double delta, char filename[40]) {
     double u, y, x;
     FILE *matrix=fopen(filename, "w");
@@ -19,21 +18,23 @@ void write_result(double *U, int N, double delta, char filename[40]) {
 }
 }
 
+const int device0 = 0;
+#define BLOCK_SIZE 16
 
-
-void __global__ jac_gpu1(int N, double delta, int max_iter, double *f, double *u, double *u_old) {
-    
-    int j,i;
-    for (i = 1; i < N-1; i++) {
-        for (j = 1; j < N-1; j++) {
-            // Update u
-            u[i*N + j] = 0.25 * (u_old[(i-1)*N + j] + u_old[(i+1)*N + j] + u_old[i*N + (j-1)] + u_old[i*N + (j+1)] + delta*delta*f[i*N + j]);
-        }
+void __global__ jac_gpu2(int N, double delta, int max_iter, double *f, double *u, double *u_old) {
+    int j = blockIdx.x * blockDim.x + threadIdx.x;
+    int i = blockIdx.y * blockDim.y + threadIdx.y;
+    if (i < (N-1) && j < (N-1) && i > 0 && j > 0) {
+        u[i*N + j] = 0.25 * (u_old[(i-1)*N + j] + u_old[(i+1)*N + j] + u_old[i*N + (j-1)] + u_old[i*N + (j+1)] + delta*delta*f[i*N + j]);
     }
 }
 
-
 int main(int argc, char *argv[]) {
+
+    // warm up:
+    double *dummy_d;
+    cudaSetDevice(device0);
+    cudaMalloc((void**)&dummy_d, 0);
 
     int max_iter, N,i,j;
 
@@ -56,6 +57,7 @@ int main(int argc, char *argv[]) {
     int size_u_old = N * N * sizeof(double);
 
     //Allocate memory on device
+    cudaSetDevice(device0);
     cudaMalloc((void**)&d_f, size_f);
     cudaMalloc((void**)&d_u, size_u);
     cudaMalloc((void**)&d_u_old, size_u_old);
@@ -92,13 +94,15 @@ int main(int argc, char *argv[]) {
 
     // do program
     int k = 0;
+    dim3 dim_grid(((N+BLOCK_SIZE-1) / BLOCK_SIZE), ((N+BLOCK_SIZE-1) / BLOCK_SIZE));
+    dim3 dim_block(BLOCK_SIZE, BLOCK_SIZE);
     double *temp, time_compute = omp_get_wtime(); 
     while (k < max_iter) {
         // Set u_old = u
         temp = d_u;
         d_u = d_u_old;
         d_u_old = temp;
-        jac_gpu1<<<1,1>>>(N, delta, max_iter, d_f, d_u, d_u_old);
+        jac_gpu2<<<dim_grid,dim_block>>>(N, delta, max_iter, d_f, d_u, d_u_old);
         k++;
     }/* end while */
     double tot_time_compute = omp_get_wtime() - time_compute;
@@ -122,10 +126,9 @@ int main(int argc, char *argv[]) {
     printf("%g\t", tot_time_compute); // total time
     printf("%g\t", time_IO_1 + time_IO_2); // I/O time
     printf("%g\t", tot_time_compute); // compute time
-    printf("# gpu1\n");
+    printf("# gpu2\n");
 
-    //
-    write_result(h_u, N, delta, "./../../analysis/pos/jac_gpu1.txt");
+    //write_result(h_u, N, delta, "./../../analysis/pos/jac_gpu2.txt");
 
     // free mem
     cudaFree(d_f), cudaFree(d_u), cudaFree(d_u_old);
